@@ -41,12 +41,14 @@ body{
 .brand-name{
     color: white;
     font-size: 35px;
+    cursor: pointer;
 }
 
 .profile-btn{
     right   : 30px;
     top: 25px;
     position: fixed;
+    cursor: pointer;
 }
 
 /*side bar*/
@@ -80,6 +82,7 @@ body{
     margin-bottom: 30px;
     margin-left: 25px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .home-btn{
@@ -90,6 +93,7 @@ body{
     margin-bottom: 30px;
     margin-left: 15px;
     font-size: 30px;
+    cursor: pointer;
 }
 
 .fav-btn{
@@ -100,6 +104,7 @@ body{
     margin-bottom: 30px;
     margin-left: 25px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 /*music nav*/
@@ -133,6 +138,7 @@ body{
     right: 20px;
     color: white;
     font-weight: lighter;
+    cursor: pointer;
 }
 
 /*music select*/
@@ -179,6 +185,7 @@ body{
     margin-top: 30px;
     margin-left: 80px;
     width: 70px;
+    cursor: pointer;
 }
 
 .m-name{
@@ -187,11 +194,13 @@ body{
     margin-left: 20px;
     padding-right: 150px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .m-artist{
     color: white;   
     margin-left: 25px;
+    cursor: pointer;
 }
 
 .contrast-nav{
@@ -207,6 +216,7 @@ body{
     color: black;
     position: fixed;
     right: 0px;
+    cursor: pointer;
 }
 
 
