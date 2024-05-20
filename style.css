@@ -39,7 +39,7 @@ body{
 }
 
 .brand-name{
-    color: white;
+    color: #feda00;
     font-size: 35px;
     cursor: pointer;
 }
@@ -74,35 +74,56 @@ body{
     color: white;
 }
 
+.undertext-search{
+    color: #feda00;
+    font-size: 10px;
+    margin-left: 26px;
+}
+
+.undertext-home{
+    color: #feda00;
+    font-size: 12px;
+    margin-left: 27px;
+}
+
+.undertext-faves{
+    color: #feda00;
+    font-size: 10px;
+    margin-left: 29px;
+}
+
 .search-btn{
+    font-variation-settings: 'FILL' 100;
     padding: 10px;
-    background-color: white;
+    background-color: #feda00;
     color: black;
-    border-radius: 50%;
-    margin-bottom: 30px;
-    margin-left: 25px;
+    border-radius: 100%;
+    margin-left: 27px;
+    margin-right: 5px;
     font-size: 20px;
     cursor: pointer;
 }
 
 .home-btn{
+    font-variation-settings: 'FILL' 100;
     padding: 10px;
-    background-color: white;
+    background-color: #feda00;
     color: black;
-    border-radius: 50%;
-    margin-bottom: 30px;
-    margin-left: 15px;
+    border-radius: 100%;
+    margin-top: 30px;
+    margin-left: 20px;
     font-size: 30px;
     cursor: pointer;
 }
 
 .fav-btn{
+    font-variation-settings: 'FILL' 100;
     padding: 10px;
-    background-color: white;
+    background-color: #feda00;
     color: black;
-    border-radius: 50%; 
-    margin-bottom: 30px;
-    margin-left: 25px;
+    border-radius: 100%; 
+    margin-top: 30px;
+    margin-left: 23px;
     font-size: 20px;
     cursor: pointer;
 }
@@ -121,7 +142,7 @@ body{
 .new-desc{
     margin-left: 50px;
     right: 20px;
-    color: white;
+    color: rgba(255, 255, 255, 0.532);
 }
 
 .create-desc{
@@ -157,7 +178,7 @@ body{
     margin-top: 30px;
     margin-left: 50px;
     right: 20px;
-    color: white;
+    color: rgba(255, 255, 255, 0.532);
 }
 
 .pick-desc{
