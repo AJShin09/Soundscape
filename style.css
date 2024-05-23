@@ -51,24 +51,10 @@ body{
   .main-container .navigation-and-logo{
     background-color:black;
     height: 100vh;
-    background-color: black;
-}
-
-/*top-bar*/
-.nav-bar{
-    width: 100%;
-    height: 75px;
-    background-color: black;
-    position: fixed;
-    padding-left: 75px;
-    align-content: flex-start;
-}
-
-.nav-bar-container{
-    height: 100%;
+    width: 10%;
     display: flex;
     flex-direction: column;
-    gap: 5rem;  
+    gap: 5rem;
     
   }
   .main-container .navigation-and-logo .logo-con
@@ -88,68 +74,366 @@ body{
   
   }
 
-.material-symbols-outlined{
-    color: white;
+  .main-container .navigation-and-logo .HomeGenreFav {
+    width: 100%;
+    height:50vh;
+  }
+  .main-container .navigation-and-logo .HomeGenreFav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+  }
+  .main-container .navigation-and-logo .HomeGenreFav ul li  {
+    width: 100%;
+  }
+
+
+ /*main-content section*/
+.main-content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  gap: 1rem;
+  flex-direction:column;
+  
+  
+}
+ /*brand and search bar section */
+ .main-content .Search-Brand{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+ }
+ .main-content   .Search-Brand .brand{
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  background-color: black;
+  height: 50%;
+ }
+ .main-content  .Search-Brand .brand h1 {
+  color: white;
+ }
+
+ .main-container .search {
+  display: flex;
+  margin-right:1rem ;
+  align-items: center;
+  background-color: rgb(104, 101, 101);
+  height: 50%;
+
+ }
+ .main-container .search label{
+  font-weight: bold;
+ }
+/*short intro*/
+
+.shortintro p{
+  font-size: 1rem;
+  color:white;
+  
+}
+.shortintro h1 {
+  font-size: 2rem;
+  color: white;
+}
+ /*playlist section*/
+ .main-content .playlist-con {
+  height: 30%;
+  display: flex;
+  gap:0.50rem;
+ }
+ 
+ .OPM-FOR-MAINPAGE{
+  background-image: url(img/opm2.jpg);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+  width: 38%;
+  height: 98%;
+  margin-left: 0.50rem;
+  border-radius: 2%;
+  border: solid yellow;
+ }
+ .RandB-FOR-MAINPAGE{
+  background-image: url(img/r&b2.jpg);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+  width: 38%;
+  height: 98%;
+  border-radius: 2%;
+  border: solid yellow;
+
+ }
+ .for-more{
+  width: 20%;
+  height: 98%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ .for-more  {
+  text-decoration: none;
+ }
+ 
+.for-more .material-symbols-outlined {
+  color: yellow;
+  font-size: 15rem;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
-.undertext-search{
-    color: #feda00;
-    font-size: 10px;
-    margin-left: 26px;
+
+/*short intro for quickplay*/
+.shortintro-for-quickplay p{
+  font-size: 1rem;
+  color:white;
+  
+}
+.shortintro-for-quickplay h1 {
+  font-size: 2rem;
+  color: white;
 }
 
-.undertext-home{
-    color: #feda00;
-    font-size: 12px;
-    margin-left: 27px;
+ .main-content .quickpick-con{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin-left: 1rem;
+  align-items: center;
+  gap: 1rem;
+ }
+ /*quickplay1*/
+ .quickpick-con .quickplay1 {
+  display:flex ;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+ }
+ 
+ .quickpick-con .quickplay1 div {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 0, 0.521);
+  height: 4rem;
+  width: 21rem;
+  border-radius: 0.40rem;
+ }
+ 
+ .quickpick-con .quickplay1 div .imgconA1{
+  background-image: url(img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con .quickplay1 div .imgconA2{
+  background-image: url(img/blackpink.jfif);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con .quickplay1 div .imgconA3{
+  background-image: url(img/Sunkissed-Lola-pic1-1024x683.jpg);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con h1 {
+  font-size: 0.80rem;
+  margin-left: 0.50rem;
+ }
+ .quickpick-con audio{
+  width: 7rem;
+ }
+ /*quickplay2*/
+ .quickpick-con .quickplay2 {
+  display:flex ;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+ }
+ 
+ .quickpick-con .quickplay2 div {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 0, 0.521);
+  height: 4rem;
+  width: 22rem;
+  border-radius: 0.40rem;
+ }
+ 
+ .quickpick-con .quickplay2 .imgconB1{
+  background-image: url(img/krislawrence.jfif);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con .quickplay2 .imgconB2{
+  background-image: url(img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con .quickplay2 .imgconB3{
+  background-image: url(img/Sunkissed-Lola-pic1-1024x683.jpg);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con .quickplay2 h1 {
+  font-size: 0.80rem;
+ }
+ .quickpick-con .quickplay2 audio{
+  width: 12rem;
+  height: 2.30rem;
+ }
+ /*quickplay3*/
+ .quickpick-con .quickplay3 {
+  display:flex ;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+ }
+ 
+ .quickpick-con .quickplay3 div {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 0, 0.521);
+  height: 4rem;
+  width: 23rem;
+  border-radius: 0.40rem;
+ }
+ 
+ .quickpick-con .quickplay3 .imgconC1{
+  background-image: url(img/yaosobi.jfif);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con .quickplay3 .imgconC2{
+  background-image: url(img/blackpink.jfif);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }.quickpick-con .quickplay3 .imgconC3{
+  background-image: url(img/mrld.jfif);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100%;
+   width: 30%;
+ }
+ .quickpick-con .quickplay3 h1 {
+  font-size: 0.80rem;
+  margin-left: 0.50rem;
+ }
+ .quickpick-con .quickplay3 audio{
+  width: 9rem;
+  height: 2.30rem;
+ }
+
+
+ /*@media (min-width:1025px) and (max-width:1100px){
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
+
+*{
+    
+    margin: 0;
+    padding: 0;
+    margin: 0;
+   ;
 }
 
-.undertext-likes{
-    color: #feda00;
-    font-size: 10px;
-    margin-left: 29px;
+/*icon 
+.material-symbols-outlined {
+  font-size: 3rem;
+  color: black;
+  background-color: rgb(199, 91, 29);
+  
+  margin-left: 1rem;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
-.search-btn{
-    font-variation-settings: 'FILL' 100;
-    padding: 10px;
-    background-color: #feda00;
-    color: black;
-    border-radius: 100%;
-    margin-left: 27px;
-    margin-right: 5px;
-    font-size: 20px;
-    cursor: pointer;
+.contact .material-symbols-outlined {
+  margin-right: 1.20rem;
+  font-size: 2rem;
+  color: black;
+  background-color: rgb(255, 255, 255);
+ 
+  align-self: center;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
-.home-btn{
-    font-variation-settings: 'FILL' 100;
-    padding: 10px;
-    background-color: #feda00;
-    color: black;
-    border-radius: 100%;
-    margin-top: 30px;
-    margin-left: 20px;
-    font-size: 30px;
-    cursor: pointer;
-}
+body{
+  background-color: black;
+    font-size: 18px;
+    
+  }
+  
+.main-container{
+   border: solid white;
+   display: flex;
+  }
+  
+  /*header section
+  .main-container .navigation-and-logo{
+    background-color: rgb(47, 194, 47);
+    height: 100vh;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    
+  }
+  .main-container .navigation-and-logo .logo-con
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .main-container .navigation-and-logo .logo-con .logo {
+    background: url(image/logo.png);
+    padding: 35px;
+    background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   margin-top: 0.20rem;
+  
+  }
 
-.like-btn{
-    font-variation-settings: 'FILL' 100;
-    padding: 10px;
-    background-color: #feda00;
-    color: black;
-    border-radius: 100%; 
-    margin-top: 30px;
-    margin-left: 23px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/*music nav*/
-.music-nav{
-    top: 70px;
-    left: 75px;
+  .main-container .navigation-and-logo .HomeGenreFav {
     width: 100%;
     height:50vh;
   }
@@ -519,9 +803,6 @@ body{
     flex-direction: column;
     gap: 2rem;
 
-   
-
-
   }
   .main-container .navigation-and-logo .HomeGenreFav ul li  {
     background-color: aqua;
@@ -680,8 +961,6 @@ body{
     gap: 5rem;
   }
 
-
-
  /*main-content section
 .main-content {
   width: 100%;
@@ -754,13 +1033,13 @@ body{
   color: black;
   background-color: yellow;
   border-radius: 3rem;
-
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
   'GRAD' 0,
   'opsz' 24
 }
+
 .contact{
   margin-top: 0.80rem;
 }
@@ -776,6 +1055,21 @@ body{
   'GRAD' 0,
   'opsz' 24
 }
+.main-container .main-content .Search-Brand .contact{
+  margin-right: 0.70rem;
+}
+.main-container .main-content .playlist-con{
+  background-color: blue;
+  height: 40vh;
+}
+.main-container .main-content .quickpick-con{
+  background-color: aquamarine;
+  height: 45vh;
+}
+ }
+
+ @media (min-width:462px) and (max-width:578px){
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
 
  body {
   background-color: black;
@@ -849,163 +1143,6 @@ body{
 }
 .main-container .main-content .Search-Brand .brand{
   margin-top: 0.20rem;
-}
-.main-container .main-content .Search-Brand .contact{
-  margin-right: 0.70rem;
-}
-.main-container .main-content .playlist-con{
-  background-color: blue;
-  height: 40vh;
-}
-.main-container .main-content .quickpick-con{
-  background-color: aquamarine;
-  height: 45vh;
-}
- }
-
- @media (min-width:462px) and (max-width:578px){
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
-
-  *{
-      
-      margin: 0;
-      padding: 0;
-      margin: 0;
-     ;
-  }
-  /*icon 
-  .material-symbols-outlined {
-    font-size: 1.70rem;
-    color: black;
-    background-color: yellow;
-    border-radius: 3rem;
-  
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
-  }
-  .contact{
-    margin-top: 0.80rem;
-  }
-  
-  .contact .material-symbols-outlined {
-    font-size: 1.70rem;
-    color: black;
-    background-color: yellow;
-    border-radius: 3rem;
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
-  }
-  
-   body {
-    background-color: black;
-    font-size: 18px;
-  
-   }
-   .main-container{
-    border: solid yellow;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
-   }
-   .main-container .navigation-and-logo {
-    background-color: rgb(76, 142, 204);
-    height: 13vh;
-    width: 65%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    
-   }
-   .main-container .navigation-and-logo .logo-con
-    {
-      background-color: red;
-      width: 9%;
-      height: 45%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 1rem;
-    }
-   .main-container .navigation-and-logo .logo-con .logo {
-    background: url(image/logo.png);
-    padding: 30px;
-    background-repeat: no-repeat;
-   background-position: center;
-   background-size: cover;
-  }
-  .main-container .navigation-and-logo .HomeGenreFav {
-    height: 9vh;
-    width: 60%;
-    background-color: white;
-    align-self: center;
-  }
-  .main-container .navigation-and-logo .HomeGenreFav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: red;
-    padding: 0.80rem;
-    gap:3rem;
-    list-style: none;
-  }
-  
-  /*main content
-  .main-container .main-content{
-    background-color: aliceblue;
-    width: 100%;
-    height: 100%;
-  }
-  .main-container .main-content .Search-Brand {
-    display: flex;
-    background-color: black;
-    flex-direction: row;
-    align-content: flex-start;
-}
-
-.music-img{
-    margin-top: 30px;
-    margin-left: 80px;
-    width: 70px;
-    cursor: pointer;
-}
-
-.m-name{
-    color: white;
-    margin-top: 40px;
-    margin-left: 20px;
-    padding-right: 150px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.m-artist{
-    color: white;   
-    margin-left: 25px;
-    cursor: pointer;
-}
-
-.contrast-nav{
-    position: fixed;
-    bottom: 0px;
-    background-color: white;
-    height: 50px;
-    width: 100%;
-}
-
-.contrast-switch{
-    font-size: 70px;
-    color: black;
-    position: fixed;
-    right: 0px;
-    cursor: pointer;
 }
 
 /*Countries*/
@@ -1679,3 +1816,147 @@ body{
         align-content: center;
     }
 }
+
+.main-container .main-content .Search-Brand .contact{
+  margin-right: 0.70rem;
+}
+.main-container .main-content .playlist-con{
+  background-color: blue;
+  height: 40vh;
+}
+.main-container .main-content .quickpick-con{
+  background-color: aquamarine;
+  height: 45vh;
+}
+ }
+
+ @media (min-width:462px) and (max-width:578px){
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
+
+  *{
+      
+      margin: 0;
+      padding: 0;
+      margin: 0;
+     ;
+  }
+  /*icon 
+  .material-symbols-outlined {
+    font-size: 1.70rem;
+    color: black;
+    background-color: yellow;
+    border-radius: 3rem;
+  
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+  .contact{
+    margin-top: 0.80rem;
+  }
+  
+  .contact .material-symbols-outlined {
+    font-size: 1.70rem;
+    color: black;
+    background-color: yellow;
+    border-radius: 3rem;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+  
+   body {
+    background-color: black;
+    font-size: 18px;
+  
+   }
+   .main-container{
+    border: solid yellow;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+   }
+   .main-container .navigation-and-logo {
+    background-color: rgb(76, 142, 204);
+    height: 13vh;
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    
+   }
+   .main-container .navigation-and-logo .logo-con
+    {
+      background-color: red;
+      width: 9%;
+      height: 45%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 1rem;
+    }
+   .main-container .navigation-and-logo .logo-con .logo {
+    background: url(image/logo.png);
+    padding: 30px;
+    background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+  }
+  .main-container .navigation-and-logo .HomeGenreFav {
+    height: 9vh;
+    width: 60%;
+    background-color: white;
+    align-self: center;
+  }
+  .main-container .navigation-and-logo .HomeGenreFav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    padding: 0.80rem;
+    gap:3rem;
+    list-style: none;
+  }
+  
+  /*main content
+  .main-container .main-content{
+    background-color: aliceblue;
+    width: 100%;
+    height: 100%;
+  }
+  .main-container .main-content .Search-Brand {
+    display: flex;
+    gap: 0.70rem;
+    justify-content: flex-end;
+    background-color: rgb(13, 99, 99);
+    height: 15vh;
+    line-height: 5rem;
+    
+  }
+  .main-container .main-content .Search-Brand .brand{
+    margin-top: 0.20rem;
+  }
+  .main-container .main-content .Search-Brand .brand h1{
+   font-size: 1rem;
+   font-weight: bold;
+  }
+  .main-container .main-content .Search-Brand .contact{
+    margin-right: 0.70rem;
+  }
+  .main-container .main-content .playlist-con{
+    background-color: blue;
+    height: 40vh;
+  }
+  .main-container .main-content .quickpick-con{
+    background-color: aquamarine;
+    height: 45vh;
+  }
+ }
+
+ */
