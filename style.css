@@ -4,7 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
 
 *{
-    
     margin: 0;
     padding: 0;
     margin: 0;
@@ -1178,6 +1177,7 @@ body{
 }
 
 .text {
+  font-family: Arial, Helvetica, sans-serif;
     color: black;
     font-size: 50px;
     position: relative;
@@ -1274,11 +1274,35 @@ body{
     float: left;
     height: 250px;
     width: 48%;
-    background-color: black;
+    background-color: white;
     transition: 0.5s ease;
 }
 
+.select-container-2{
+  cursor: pointer;
+  border-radius: 20px;
+  float: right;
+  height: 250px;
+  width: 48%;
+  background-color: white;
+  transition: 1s;
+}
+
+.title-1{ 
+  justify-content: space-between;
+  top: 50px;
+  display: block;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
 /*container image*/ /*  Maxine dito mo nalang I-edit yung size ng image na ipapasok mo(hover mo muna ah para ma-see mo or palitan mo muna yung display)*/
+.vis-hit-icon{
+  max-width: 100%;
+  display: block;
+}
+
 .hit-icon{
     display: none;
 }
@@ -1287,12 +1311,20 @@ body{
   background-color: #feda00;
 }
 
+.select-container-1:hover .vis-hit-icon{
+  display: none;
+}
+
+.select-container-2:hover .vis-hit-icon{
+  display: none;
+}
+
 .select-container-2:hover{
 background-color: #feda00;
 }
 
 .select-container-1:hover .hit-icon{
-    display: block;
+  display: block;
 }
 
 .select-container-2:hover .hit-icon{
@@ -1303,29 +1335,20 @@ background-color: #feda00;
   background-color: #feda00;
 }
 
-.title-1{ 
-    display: block;
-    top: 80%;
-    position: relative;
-    text-align: center;
-    color: white;
-}
-
 .select-container-1:hover .title-1{
-    display: none;
+  display: none;
 }
 
-.select-container-2{
-    cursor: pointer;
-    border-radius: 20px;
-    float: right;
-    height: 250px;
-    width: 48%;
-    background-color: black;
-    transition: 1s;
+.select-container-2:hover .title-1{
+  display: none;
+}
+
+.view-link{
+  text-decoration: none;
 }
 
 .view-more{
+  text-decoration: none;
     cursor: pointer;
     color: white;
     margin-left: 10%;
@@ -1467,12 +1490,10 @@ background-color: #feda00;
         float: left;
         height: 200px;
         width: 48%;
-        background-color: white;
         transition: 1s;
     }
     
     .title-1{ 
-        top: 80%;
         position: relative;
         text-align: center;
         color: black;
@@ -1483,7 +1504,6 @@ background-color: #feda00;
         float: right;
         height: 200px;
         width: 48%;
-        background-color: white;
         transition: 1s;
     }
     
@@ -1629,13 +1649,11 @@ background-color: #feda00;
         border-radius: 20px;
         height: 170px;
         width: 48%;
-        background-color: white;
         transition: 1s;
         margin-bottom: 10px;
     }
     
     .title-1{ 
-        top: 80%;
         position: relative;
         font-size: 12px;
         text-align: center;
@@ -1646,7 +1664,6 @@ background-color: #feda00;
         border-radius: 20px;
         height: 170px;
         width: 48%;
-        background-color: white;
         transition: 1s;
         margin-bottom: 10px;
     }
@@ -1664,7 +1681,6 @@ background-color: #feda00;
         background-color: white;
         text-align: center;
         align-content: center;
-
     }
 }
 
@@ -1795,13 +1811,11 @@ background-color: #feda00;
         border-radius: 20px;
         height: 130px;
         width: 48%;
-        background-color: white;
         transition: 1s;
         margin-bottom: 10px;
     }
     
     .title-1{ 
-        top: 80%;
         position: relative;
         font-size: 10px;
         text-align: center;
@@ -1812,7 +1826,6 @@ background-color: #feda00;
         border-radius: 20px;
         height: 130px;
         width: 48%;
-        background-color: white;
         transition: 1s;
         margin-bottom: 10px;
     }
@@ -1973,4 +1986,5 @@ background-color: #feda00;
     height: 45vh;
   }
  }
+
  */}
