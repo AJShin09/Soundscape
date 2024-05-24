@@ -1256,6 +1256,8 @@ body{
     transition: 1s;
 }
 
+
+/* Container section*/
 .hit-text{
     cursor: pointer;
     font-size: 25px;
@@ -1276,16 +1278,29 @@ body{
     transition: 0.5s ease;
 }
 
-.select-container-1:hover{
-    background-color: #feda00;
-}
-
+/*container image*/ /*  Maxine dito mo nalang I-edit yung size ng image na ipapasok mo(hover mo muna ah para ma-see mo or palitan mo muna yung display)*/
 .hit-icon{
     display: none;
 }
 
+.select-container-1:hover{
+  background-color: #feda00;
+}
+
+.select-container-2:hover{
+background-color: #feda00;
+}
+
 .select-container-1:hover .hit-icon{
     display: block;
+}
+
+.select-container-2:hover .hit-icon{
+  display: block;
+}
+
+.view-more:hover{
+  background-color: #feda00;
 }
 
 .title-1{ 
@@ -1829,7 +1844,6 @@ body{
   background-color: aquamarine;
   height: 45vh;
 }
- }
 
  @media (min-width:462px) and (max-width:578px){
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
@@ -1959,6 +1973,4 @@ body{
     height: 45vh;
   }
  }
-
- */
-
+ */}
