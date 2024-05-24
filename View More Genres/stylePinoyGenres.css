@@ -1,0 +1,115 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css');
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 80px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .logo {
+    margin-top: 40px;
+    margin-left: 350px;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 100px;
+    
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.icon {
+    font-size: 40px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+}
+
+.cover-image {
+
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.genres {
+    margin-top: -180px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.genre {
+    flex: 1;
+    margin: 20px;
+    min-width: 200px;
+}
+
+.genre h2 {
+    margin-bottom: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.grid-item {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.box {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .text {
+            font-size: 1em;
+            color: #fff;
+            margin-top: -40px;
+            margin-left: 50px;
+        }
