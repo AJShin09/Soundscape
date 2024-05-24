@@ -4,7 +4,7 @@
 body {
     margin: 0;
     background-color: #000;
-    color: #fff;
+    color: #feda00;
 }
 
 .container {
@@ -57,20 +57,19 @@ body {
     height: 500px;
     display: flex;
     flex-direction: column;
-    margin-top: 150px;
-
+    margin-top: 50px;
 }
 
 .cover-image {
     margin-left: 30px;
-    margin-top: -90px;
     width: 150%;
     max-width: 550px;
     border-radius: 10px;
+    margin-top: 10px;
 }
 
 h1 {
-    margin-top: 20px;
+    top: 0;
     font-size: 24px;
 }
 
@@ -81,7 +80,7 @@ h1 {
 
 
 .genres {
-    margin-top: -150px;
+    margin-top: -50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -141,7 +140,7 @@ h1 {
 
     font-size: 0.8em;
     color: #fff;
-    margin-top: -40px;
+    margin-top: -50px;
     margin-left: 60px;
     width: 150px;
 }
@@ -329,3 +328,9 @@ h1 {
 a.view-link{
     text-decoration: none;
 }   
+
+/* dagdag ni max */
+
+.header a{
+    cursor: pointer;
+}

@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.background{
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+}
+
+.background img{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-width: 50%;
+    min-height: 50%;
+    filter: blur(15px);
+}
+
+.exit{
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 10px;
+}
+
+.container{
+    position: relative;
+    padding: 10px;
+}
+
+.container .song-info{
+    background-color: #00000070;
+    margin: 0 30px;
+    padding: 20px 20px 5px 160px;
+    border-radius: 15px 15px 0 0;
+}
+
+.container .song-info .artist-name{
+    color: #daba01;
+    font-size: 14px;
+    margin: 3px 0 20px;
+}
+
+.container .song-info .song-name{
+    color: #feda00;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.container .song-info .progress-bar{
+    background-color: #505050;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.container .song-info .progress-bar .fill-bar{
+    width: 0;
+    height: 6px;
+    border-radius: 20px;
+    background: #feda00;
+}
+
+.container .song-info .time{
+    font-size: 15px;
+    color: #b9b9b9;
+    margin: 10px 0;
+}
+
+.container .disk{
+    max-width: 120px;
+}
+
+.container .disk .cover{
+    width: 145px;
+    height: 145px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    background: url(taylor/folklore.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    border: 3px solid #00000070;
+    border-radius: 10%;
+    box-shadow: 0 10px 30px rgb(0, 0, 0.6);
+}
+
+.container .controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #00000070;
+    width: 450px;
+    height: 100px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgb(0, 0, 0.6);
+}
+
+.container .controls #play{
+    background-color: #dabc11;
+    color: #fff;
+    padding: 15px 17px 14px 18px;
+    font-size: 28px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.container .controls #play:hover{
+    background: #dab9019d;
+}
+
+.container .controls i{
+    padding: 30px 8px;
+    font-size: 35px;
+    cursor: pointer;
+    color: #919191;
+    transition: all0.3s ease;
+}
+
+.container .controls i:hover{
+    color: #fff;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">    
+    <link rel="stylesheet" href="stylenimax.css">
+    <title>Habang Buhay</title>
+</head>
+<body>
+    <div class="background">
+        <img src="taylor/folklore.jpg" id="bg">
+    </div>
+    <div class="container">
+        <div class="song-info">
+            <div class="song-name">song name</div>
+            <div class="artist-name">name</div>
+            
+            <div class="progress-bar">
+                <div class="fill-bar"></div>
+            </div>
+            <div class="time">0:00 - 0:00</div>
+        </div>
+        
+        <div class="disk">
+            <div id="cover" class="cover"></div>
+        </div>
+        <div class="controls">
+            <i id="play" class="play-btn fa-solid fa-play"></i>
+        </div>
+    </div>
+
+    <script>
+        const songList = [
+        {
+            name: "Habang Buhay",
+            artist: "Zack Tabuldo",
+            src: "music/opm/habangbuhay.mp3",
+            cover: "img/zack.jpg",
+            bg: "img/zack.jpg"
+        }
+    ]
+    const artistName = document.querySelector('.artist-name');
+    const musicName = document.querySelector('.song-name');
+    const fillbar = document.querySelector('.fill-bar');
+    const time = document.querySelector('.time');
+    const cover = document.querySelector('.cover');
+    const bg = document.getElementById('bg');
+    const playBtn = document.getElementById('play');
+    const prog = document.querySelector('.progress-bar');
+
+    let song = new Audio();
+    let currentSong = 0;
+    let playing = false;
+    let back = document.getElementById('back');
+
+    back.addEventListener('click', () => {
+        window.history.back();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSong(currentSong);
+        song.addEventListener('timeupdate', updateProgress);
+        playBtn.addEventListener('click', togglePlayPause);
+        prog.addEventListener('click', seek);
+    });
+
+    function loadSong(index) {
+        song.src = songList[index].src;
+        artistName.textContent = songList[index].artist;
+        musicName.textContent = songList[index].name;
+        cover.style.backgroundImage = `url(${songList[index].cover})`;
+        bg.src = songList[index].bg;
+    }
+
+    function togglePlayPause() {
+        if (playing) {
+            song.pause();
+            playBtn.classList.replace('fa-pause', 'fa-play');
+        } else {
+            song.play();
+            playBtn.classList.replace('fa-play', 'fa-pause');
+        }
+        playing = !playing;
+    }
+
+    function updateProgress() {
+        const { duration, currentTime } = song;
+        const percent = (currentTime / duration) * 100;
+        fillbar.style.width = `${percent}%`;
+
+        const minutes = Math.floor(currentTime / 60);
+        const seconds = Math.floor(currentTime % 60);
+        const durationMinutes = Math.floor(duration / 60);
+        const durationSeconds = Math.floor(duration % 60);
+
+        time.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds} - ${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
+    }
+
+    function seek(event) {
+        const progressWidth = prog.clientWidth;
+        const clickX = event.offsetX;
+        const duration = song.duration;
+        
+        song.currentTime = (clickX / progressWidth) * duration;
+    }
+
+    </script>
+
+</body>
+</html>
