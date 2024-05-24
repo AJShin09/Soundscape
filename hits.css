@@ -133,15 +133,18 @@ h1 {
      height: 50px;
      background-color: #fff;
      border-radius: 10px; 
+
 }
 
 .texts {
 
-    font-size: 1em;
+    font-size: 0.8em;
     color: #fff;
     margin-top: -40px;
-    margin-left: 80px;
+    margin-left: 60px;
+    width: 150px;
 }
+
 
 
 
