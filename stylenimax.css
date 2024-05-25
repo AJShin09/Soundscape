@@ -34,20 +34,18 @@ body{
     filter: blur(15px);
 }
 
-.exit{
-    top: 0;
-    right: 0;
-    position: absolute;
-    padding: 10px;
-}
+
 
 .container{
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
 }
 
 .container .song-info{
-    background-color: #00000000;;
+    background-color: #00000000;
     margin: 0 30px;
     padding: 20px 20px 5px 160px;
     border-radius: 15px 15px 0 0;
@@ -55,6 +53,8 @@ body{
 
 .container .song-info .artist-name{
     color: #daba01;
+    border: #00000000;
+    border-radius: 10px;
     font-size: 14px;
     margin: 3px 0 20px;
 }
@@ -63,6 +63,10 @@ body{
     color: #feda00;
     font-weight: bold;
     font-size: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
 }
 
 .container .song-info .progress-bar{
@@ -103,33 +107,22 @@ body{
     box-shadow: 0 10px 30px rgb(0, 0, 0.6);
 }
 
-.container .controls{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background-color: #00000070;
-    width: 450px;
-    height: 100px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgb(0, 0, 0.6);
-}
-
-.container .controls #play{
+.controls #play{
+    left: 20px;
     background-color: #dabc11;
     color: #fff;
     padding: 15px 17px 14px 18px;
     font-size: 28px;
     border-radius: 50%;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.container .controls #play:hover{
+.controls #play:hover{
     background: #dab9019d;
 }
 
-.container .controls i{
+.controls i{
     padding: 30px 8px;
     font-size: 35px;
     cursor: pointer;
@@ -137,6 +130,21 @@ body{
     transition: all0.3s ease;
 }
 
-.container .controls i:hover{
+.controls i:hover{
     color: #fff;
+}
+
+.exit{
+    font-size: 28px;
+    color: #daba01;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 10px;
+    cursor: pointer;
+    text-shadow: 0 10px 30px rgb(0, 0, 0.6);
+}
+
+.exit:hover{
+    color: #00000086;
 }

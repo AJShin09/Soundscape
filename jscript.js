@@ -1,31 +1,130 @@
 const songList = [
     {
-        name: "Habang Buhay",
-        artist: "Zack Tabuldo",
-        src: "music/opm/habangbuhay.mp3",
-        cover: "img/zack.jpg",
-        bg: "img/zack.jpg"
+        name: "Eine Kleine",
+        artist: "Kenshi Yonezu",
+        src:"music/jpop/alittle-kenshi.mp3",
+        cover: "img/kenshi.jfif",
+        bg: "img/kenshi.jfif"
     },
     {
-        name: "illicit affairs",
-        artist: "Taylor Swift",
-        src: "taylor/illicitaffairs.mp3",
-        cover: "taylor/folklore.jpg",
-        bg: "taylor/folklore.jpg"
+        name: "Encore",
+        artist: "Yaosobi",
+        src: "music/jpop/encore-yoasobi.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
     },
     {
-        name: "august",
-        artist: "Taylor Swift",
-        src: "taylor/august.mp3",
-        cover: "taylor/folklore.jpg",
-        bg: "taylor/folklore.jpg"
+        name: "Kirari",
+        artist: "Fujiii Kaze",
+        src: "music/jpop/kirari-fuji.mp3",
+        cover: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg",
+        bg: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg"
     },
     {
-        name: "hatdog",
-        artist: "Taylor Swift",
-        src: "taylor/august.mp3",
-        cover: "taylor/ppop1.jpg",
-        bg: "taylor/ppop1.jpg"
+        name: "Lemon",
+        artist: "Kenshi Yonezu",
+        src: "music/jpop/lemon-kenshi.mp3",
+        cover: "img/kenshi.jfif",
+        bg: "img/kenshi.jfif"
+    },
+    {
+        name: "Peace Sign",
+        artist: "Kenshi Yonezu",
+        src: "music/jpop/peacesign-kenshi.mp3",
+        cover: "img/kenshi.jfif",
+        bg: "img/kenshi.jfif"
+    },
+    {
+        name: "Seishun",
+        artist: "Fujiii Kaze",
+        src: "music/jpop/seishun-fuji.mp3",
+        cover: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg",
+        bg: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg"
+    },
+    {
+        name: "Tracing",
+        artist: "Yaosobi",
+        src: "music/jpop/tracing-yoasobi.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },{
+        name: "Lemon",
+        artist: "Fujiii Kaze",
+        src: "music/jpop/shinunoga-fuji.mp3",
+        cover: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg",
+        bg: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg"
+    },{
+        name: "OTONABLUE",
+        artist: "ATARASHII GAKKO",
+        src: "music/jpop/ATARASHII GAKKO! - OTONABLUE (Official Choreography Video).mp3",
+        cover: "img/ateashi.jfif",
+        bg: "img/ateashi.jfif"
+    },{
+        name: "Tokyo Calling",
+        artist: "ATARASHII GAKKO",
+        src: "music/jpop/ATARASHII GAKKO! - Tokyo Calling (Official Music Video).mp3",
+        cover: "img/ateashi.jfif",
+        bg: "img/ateashi.jfif"
+    },{
+        name: "Crossing Field",
+        artist: "LiSA",
+        src: "music/jpop/LiSA - Crossing Field.mp3",
+        cover: "img/LISA.jfif",
+        bg: "img/LISA.jfif"
+    },{
+        name: "Rising Hope",
+        artist: "LiSA",
+        src: "music/jpop/LiSA - Rising Hope.mp3",
+        cover: "img/LISA.jfif",
+        bg: "img/LISA.jfif"
+    },{
+        name: "アニメ鬼滅の",
+        artist: "LiSA",
+        src: "music/jpop/LiSA紅蓮華-MUSiC CLiP-アニメ鬼滅の刃竈門炭治郎 立志編 オープニングテーマ.mp3",
+        cover: "img/LISA.jfif",
+        bg: "img/LISA.jfif"
+    },{
+        name: "Sweet Love ",
+        artist: "Junko Ohashi",
+        src: "music/jpop/Sweet Love.mp3",
+        cover: "img/sweetlove.jfif",
+        bg: "img/sweetlove.jfif"
+    },{
+        name: "Flyday Chinatown",
+        artist: "Yasuha",
+        src: "music/jpop/Yasuha - Flyday Chinatown.mp3",
+        cover: "img/yusuha1.jfif",
+        bg: "img/yusuha1.jfif"
+    },{
+        name: "Stay With Me",
+        artist: "真夜中のドア",
+        src: "music/jpop/真夜中のドアStay With Me.mp3",
+        cover: "img/staywith me.jfif",
+        bg: "img/staywith me.jfif"
+    },{
+        name: "Lemon",
+        artist: "Kenshi Yonezu",
+        src: "music/jpop/lemon-kenshi.mp3",
+        cover: "img/kenshi.jfif",
+        bg: "img/kenshi.jfif"
+    },{
+        name: "LOVE TRIP",
+        artist: "the peggies",
+        src: "music/jpop/the peggies LOVE TRIP(Music Video).mp3",
+        cover: "img/the peggies.jfif",
+        bg: "img/the peggies.jfif"
+    },{
+        name: "センチメートル",
+        artist: "the peggies",
+        src: "music/jpop/the peggiesセンチメートルMusic Video.mp3",
+        cover: "img/the peggies.jfif",
+        bg: "img/the peggies.jfif"
+    },{
+        name: "花火",
+        artist: "the peggies",
+        src: "music/jpop/the peggies花火Music Video.mp3",
+        cover: "img/the peggies.jfif",
+        bg: "img/the peggies.jfif"
     }
 ]
 
