@@ -1352,6 +1352,7 @@ body{
   position: relative;
   text-align: center;
   color: white;
+  display: none;
 }
 
 /*container image*/ /*  Maxine dito mo nalang I-edit yung size ng image na ipapasok mo(hover mo muna ah para ma-see mo or palitan mo muna yung display)*/
