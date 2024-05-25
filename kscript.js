@@ -1,31 +1,108 @@
 const songList = [
     {
-        name: "Habang Buhay",
-        artist: "Zack Tabuldo",
-        src: "music/opm/habangbuhay.mp3",
-        cover: "img/zack.jpg",
-        bg: "img/zack.jpg"
+        name: "Kill This Love",
+        artist: "BLACKPINK",
+        src: "music/kpop/BLACKPINK - 'Kill This Love' MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
     },
     {
-        name: "illicit affairs",
-        artist: "Taylor Swift",
-        src: "taylor/illicitaffairs.mp3",
-        cover: "taylor/folklore.jpg",
-        bg: "taylor/folklore.jpg"
+        name: "DDU-DU DDU-DU",
+        artist: "BLACKPINK",
+        src: "music/kpop/BLACKPINK - 뚜두뚜두 (DDU-DU DDU-DU) MV.mp3",
+        cover: "image/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
     },
     {
-        name: "august",
-        artist: "Taylor Swift",
-        src: "taylor/august.mp3",
-        cover: "taylor/folklore.jpg",
-        bg: "taylor/folklore.jpg"
+        name: "AS IF IT'S YOUR LAST",
+        artist: "BLACKPINK",
+        src: "music/kpop/BLACKPINK - '마지막처럼 (AS IF IT'S YOUR LAST)' MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
     },
     {
-        name: "hatdog",
-        artist: "Taylor Swift",
-        src: "taylor/august.mp3",
-        cover: "taylor/ppop1.jpg",
-        bg: "taylor/ppop1.jpg"
+        name: "FAKE LOVE",
+        artist: "BTS",
+        src: "music/kpop/BTS (방탄소년단) 'FAKE LOVE' Official MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "LIFE GOES ON",
+        artist: "BTS",
+        src: "music/kpop/BTS (방탄소년단) 'Life Goes On' Official MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "CHEER UP",
+        artist: "TWICE",
+        src: "music/kpop/TWICE _CHEER UP_ MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "I CAN'T STOP ME",
+        artist: "TWICE",
+        src: "music/kpop/TWICE _I CAN'T STOP ME_ MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "WHAT IS LOVE",
+        artist: "TWICE",
+        src: "music/kpop/TWICE _What is Love__ MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "ABOUTIME",
+        artist: "B JYUN",
+        src: "music/kpop/B JYUN  ABOUTIME.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "LOVE SCENARIO",
+        artist: "iKON",
+        src: "music/kpop/iKON  LOVE SCENARIO   Audio.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "BATTER UP",
+        artist: "BABYMONSTER",
+        src: "music/kpop/BABYMONSTER  BATTER UP 7 ver Official Audio.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "SHEESH",
+        artist: "BABYMONSTER",
+        src: "music/kpop/BABYMONSTER  SHEESH Official Audio.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "OMG",
+        artist: "NewJeans",
+        src: "music/kpop/NewJeans OMG Lyrics  OMG  Color Coded Lyrics.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "Super Shy",
+        artist: "NewJeans",
+        src: "music/kpop/NewJeans  Super Shy Official MV.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
+    },
+    {
+        name: "BOYFRIEND",
+        artist: "Boyfriend",
+        src: "music/kpop/BOYFRIEND   Boyfriend Music Video.mp3",
+        cover: "img/yoasobi.jpg",
+        bg: "img/yoasobi.jpg"
     }
 ]
 

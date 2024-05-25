@@ -7,26 +7,138 @@ const songList = [
         bg: "img/zack.jpg"
     },
     {
-        name: "illicit affairs",
-        artist: "Taylor Swift",
-        src: "taylor/illicitaffairs.mp3",
-        cover: "taylor/folklore.jpg",
-        bg: "taylor/folklore.jpg"
+        name: "HKP",
+        artist: "Sunkissed Lola",
+        src: "music/opm/HKP (lyrics) - Sunkissed Lola.mp3",
+        cover: "img/Sunkissed-Lola-pic1-1024x683.jpg",
+        bg: "img/Sunkissed-Lola-pic1-1024x683.jpg"
     },
     {
-        name: "august",
-        artist: "Taylor Swift",
-        src: "taylor/august.mp3",
-        cover: "taylor/folklore.jpg",
-        bg: "taylor/folklore.jpg"
+        name: "This Ain't Love",
+        artist: "Lola Amour",
+        src: "music/opm/Lola Amour - This Ain't Love (Official Lyric Video).mp3",
+        cover: "img/lola-amour.jpg",
+        bg: "img/lola-amour.jpg"
     },
     {
-        name: "hatdog",
-        artist: "Taylor Swift",
-        src: "taylor/august.mp3",
-        cover: "taylor/ppop1.jpg",
-        bg: "taylor/ppop1.jpg"
-    }
+        name: "Makakalimutan Ka",
+        artist: "Sunkissed Lola",
+        src: "music/opm/Makalimutan ka (lyrics) - Sunkissed Lola.mp3",
+        cover: "img/Sunkissed-Lola-pic1-1024x683.jpg",
+        bg: "img/Sunkissed-Lola-pic1-1024x683.jpg"
+    },
+    {
+        name: "Kapit Bitiw",
+        artist: "MRLD",
+        src: "music/opm/Kapit Bitiw.mp3",
+        cover: "img/mrld.jfif",
+        bg: "img/mrld.jfif"
+    },
+    {
+        name: "Maligayang Pagkukunwari",
+        artist: "MRLD",
+        src: "music/opm/mrld - Maligayang Pagkunwari (Official Audio).mp3",
+        cover: "img/mrld.jfif",
+        bg: "img/mrld.jfif"
+    },
+    {
+        name: "Pasilyo",
+        artist: "Sunkissed Lola",
+        src: "music/opm/SunKissed Lola - Pasilyo.mp3",
+        cover: "img/Sunkissed-Lola-pic1-1024x683.jpg",
+        bg: "img/Sunkissed-Lola-pic1-1024x683.jpg"
+    },
+    {
+        name: "Your Eyes, They Lie",
+        artist: "MRLD",
+        src: "music/opm/your eyes, they lie (official audio).mp3",
+        cover: "img/mrld.jfif",
+        bg: "img/mrld.jfif"
+    },
+    {
+        name: "Paraluman",
+        artist: "Adie",
+        src: "music/opm/Paraluman.mp3",
+        cover: "img/adie.jpg",
+        bg: "img/adie.jpg"
+    },
+    {
+        name: "Asan Ka Na Ba",
+        artist: "Zack Tabuldo",
+        src: "music/opm/Zack Tabudlo - Asan Ka Na Ba (Lyric Video).mp3",
+        cover: "img/zack.jpg",
+        bg: "img/zack.jpg"
+    },
+    {
+        name: "Pano",
+        artist: "Zack Tabuldo",
+        src: "music/opm/Zack Tabudlo - Pano (Lyric Video).mp3",
+        cover: "img/zack.jpg",
+        bg: "img/zack.jpg"
+    },
+    {
+        name: "Umiinit",
+        artist: "Lola Amour",
+        src: "music/opm/Lola Amour - Umiinit (Official Lyric Video).mp3",
+        cover: "img/lola-amour.jpg",
+        bg: "img/lola-amour.jpg"
+    },
+    {
+        name: "Dungaw",
+        artist: "Adie",
+        src: "music/opm/Dungaw.mp3",
+        cover: "img/adie.jpg",
+        bg: "img/adie.jpg"
+    },
+    {
+        name: "Mahika",
+        artist: "Adie",
+        src: "music/opm/Mahika.mp3",
+        cover: "img/adie.jpg",
+        bg: "img/adie.jpg"
+    },
+    {
+        name: "You'll Be Safe Here",
+        artist: "Adie",
+        src: "music/opm/You'll Be Safe Here.mp3",
+        cover: "img/adie.jpg",
+        bg: "img/adie.jpg"
+    },
+    {
+        name: "I'll Give My Heart",
+        artist: "Lola Amour",
+        src: "music/opm/Lola Amour - I'll Give My Heart (Official Lyric Video).mp3",
+        cover: "img/lola-amour.jpg",
+        bg: "img/lola-amour.jpg"
+    },
+    {
+        name: "Namimiss Ko Na",
+        artist: "Lola Amour",
+        src: "music/opm/Lola Amour - Namimiss Ko Na (Official Lyric Video).mp3",
+        cover: "img/lola-amour.jpg",
+        bg: "img/lola-amour.jpg"
+    },
+    {
+        name: "Raining in Manila",
+        artist: "Lola Amour",
+        src: "music/opm/Lola Amour - Raining in Manila (Official Lyric Video).mp3",
+        cover: "img/lola-amour.jpg",
+        bg: "img/lola-amour.jpg"
+    },
+    {
+        name: "Hinto Galaw",
+        artist: "MRLD",
+        src: "music/opm/Hinto Galaw.mp3",
+        cover: "img/mrld.jfif",
+        bg: "img/mrld.jfif"
+    },
+    {
+        name: "Tinatangi",
+        artist: "Adie",
+        src: "music/opm/Tinatangi (feat. Chrstn) (feat. Chrstn).mp3",
+        cover: "img/adie.jpg",
+        bg: "img/adie.jpg"
+    },
 ]
 
 const artistName = document.querySelector('.artist-name');
