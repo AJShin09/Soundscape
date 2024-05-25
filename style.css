@@ -256,7 +256,7 @@ body{
  }
  
  /*quickplay1*/
- /*.quickpick-con .quickplay1 {
+ .quickpick-con .quickplay1 {
   display:flex ;
   flex-direction: column;
   height: 100%;
@@ -266,14 +266,13 @@ body{
  .quickpick-con .quickplay1 div {
   display: flex;
   align-items: center;
-  background-color: #feda00;
   height: 4rem;
   width: 21rem;
   border-radius: 0.40rem;
  }
  
  .quickpick-con .quickplay1 div .imgconA1{
-  background-image: url(img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg);
+  background-image: url(img/fujikaze.jpeg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -304,7 +303,7 @@ body{
   width: 7rem;
  }
  /*quickplay2*/
- /*.quickpick-con .quickplay2 {
+ .quickpick-con .quickplay2 {
   display:flex ;
   flex-direction: column;
   height: 100%;
@@ -314,7 +313,6 @@ body{
  .quickpick-con .quickplay2 div {
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 0, 0.521);
   height: 4rem;
   width: 22rem;
   border-radius: 0.40rem;
@@ -329,7 +327,7 @@ body{
    width: 30%;
  }
  .quickpick-con .quickplay2 .imgconB2{
-  background-image: url(img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg);
+  background-image: url(img/fujikaze.jpeg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -352,7 +350,7 @@ body{
   height: 2.30rem;
  }
  /*quickplay3*/
- /*.quickpick-con .quickplay3 {
+ .quickpick-con .quickplay3 {
   display:flex ;
   flex-direction: column;
   height: 100%;
@@ -362,14 +360,13 @@ body{
  .quickpick-con .quickplay3 div {
   display: flex;
   align-items: center;
-  background-color: #feda00;
   height: 4rem;
   width: 23rem;
   border-radius: 0.40rem;
  }
  
  .quickpick-con .quickplay3 .imgconC1{
-  background-image: url(img/yaosobi.jfif);
+  background-image: url(img/yoasobi.jpg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -624,26 +621,40 @@ body{
   gap: 0.5rem;
   
  }
- .quickpick-con .quickplay1 h1{
+ 
+ .quickpick-con .quickplay1 .title{
+  color: #fff;
   cursor: pointer;
  }
- .quickpick-con .quickplay2 h1{
+ .quickpick-con .quickplay2 .title{
   cursor: pointer;
  }
- .quickpick-con .quickplay3 h1{
+ .quickpick-con .quickplay3 .title{
   cursor: pointer;
  }
+
+ .quickpick-con .quickplay1 .name{
+  color: #ffffff94;
+  cursor: pointer;
+ }
+ .quickpick-con .quickplay2 .name{
+  cursor: pointer;
+ }
+ .quickpick-con .quickplay3 .name{
+  cursor: pointer;
+ }
+
+
  .quickpick-con .quickplay1 div {
   display: flex;
   align-items: center;
-  background-color:#feda00;
   height: 4rem;
   width: 21rem;
   border-radius: 0.40rem;
  }
  
  .quickpick-con .quickplay1 div .imgconA1{
-  background-image: url(img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg);
+  background-image: url(img/fujikaze.jpeg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -669,6 +680,7 @@ body{
  .quickpick-con h1 {
   font-size: 0.80rem;
   margin-left: 0.50rem;
+  color: #feda00;
  }
  .quickpick-con audio{
   width: 7rem;
@@ -684,7 +696,6 @@ body{
  .quickpick-con .quickplay2 div {
   display: flex;
   align-items: center;
-  background-color: #feda00;
   height: 4rem;
   width: 22rem;
   border-radius: 0.40rem;
@@ -699,7 +710,7 @@ body{
    width: 30%;
  }
  .quickpick-con .quickplay2 .imgconB2{
-  background-image: url(img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg);
+  background-image: url(img/fujikaze.jpeg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -732,14 +743,13 @@ body{
  .quickpick-con .quickplay3 div {
   display: flex;
   align-items: center;
-  background-color: #feda00;
   height: 4rem;
   width: 23rem;
   border-radius: 0.40rem;
  }
  
  .quickpick-con .quickplay3 .imgconC1{
-  background-image: url(img/yaosobi.jfif);
+  background-image: url(img/yoasobi.jpg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
