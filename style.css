@@ -69,6 +69,7 @@ body{
 }
 
 .undertext-modes{
+  display: none;
   color: #feda00;
   font-size: 10px;
   margin-left: 32px;
@@ -122,6 +123,7 @@ body{
 }
 
 .fav-btn{
+  display: none;
   font-variation-settings: 'FILL' 100;
   padding: 10px;
   background-color: #feda00;
@@ -627,9 +629,11 @@ body{
   cursor: pointer;
  }
  .quickpick-con .quickplay2 .title{
+  color: #fff;
   cursor: pointer;
  }
  .quickpick-con .quickplay3 .title{
+  color: #fff;
   cursor: pointer;
  }
 
@@ -638,9 +642,11 @@ body{
   cursor: pointer;
  }
  .quickpick-con .quickplay2 .name{
+  color: #ffffff94;
   cursor: pointer;
  }
  .quickpick-con .quickplay3 .name{
+  color: #ffffff94;
   cursor: pointer;
  }
 

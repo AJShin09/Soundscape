@@ -3,22 +3,22 @@ const songList = [
         name: "Kill This Love",
         artist: "BLACKPINK",
         src: "music/kpop/BLACKPINK - 'Kill This Love' MV.mp3",
-        cover: "img/yoasobi.jpg",
-        bg: "img/yoasobi.jpg"
+        cover: "img/blackpink.jfif",
+        bg: "img/blackpink.jfif"
     },
     {
         name: "DDU-DU DDU-DU",
         artist: "BLACKPINK",
         src: "music/kpop/BLACKPINK - 뚜두뚜두 (DDU-DU DDU-DU) MV.mp3",
-        cover: "image/yoasobi.jpg",
-        bg: "img/yoasobi.jpg"
+        cover: "img/blackpink.jfif",
+        bg: "img/blackpink.jfif"
     },
     {
         name: "AS IF IT'S YOUR LAST",
         artist: "BLACKPINK",
         src: "music/kpop/BLACKPINK - '마지막처럼 (AS IF IT'S YOUR LAST)' MV.mp3",
-        cover: "img/yoasobi.jpg",
-        bg: "img/yoasobi.jpg"
+        ccover: "img/blackpink.jfif",
+        bg: "img/blackpink.jfif"
     },
     {
         name: "FAKE LOVE",
