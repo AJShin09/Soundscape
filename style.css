@@ -51,6 +51,7 @@ body{
 }
 
 .profile-btn{
+  display: none;
   right   : 30px;
   top: 25px;
   position: fixed;
@@ -321,7 +322,7 @@ body{
  }
  
  .quickpick-con .quickplay2 .imgconB1{
-  background-image: url(img/krislawrence.jfif);
+  background-image: url(img/adie.jpg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -708,7 +709,7 @@ body{
  }
  
  .quickpick-con .quickplay2 .imgconB1{
-  background-image: url(img/krislawrence.jfif);
+  background-image: url(img/adie.jpg);
   background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
@@ -1261,6 +1262,7 @@ body{
 }
 
 .subtext {
+    display: none;
     color: black;
     font-size: 20px;
     position: relative;

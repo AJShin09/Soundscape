@@ -15,10 +15,10 @@ const songList = [
     },
     {
         name: "Kirari",
-        artist: "Fujiii Kaze",
+        artist: "Fuji Kaze",
         src: "music/jpop/kirari-fuji.mp3",
-        cover: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg",
-        bg: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg"
+        cover: "img/fujikaze.jpeg",
+        bg: "img/fujikaze.jpeg"
     },
     {
         name: "Lemon",
@@ -38,8 +38,8 @@ const songList = [
         name: "Seishun",
         artist: "Fujiii Kaze",
         src: "music/jpop/seishun-fuji.mp3",
-        cover: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg",
-        bg: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg"
+        cover: "img/fujikaze.jpeg",
+        bg: "img/fujikaze.jpeg"
     },
     {
         name: "Tracing",
@@ -48,11 +48,11 @@ const songList = [
         cover: "img/yoasobi.jpg",
         bg: "img/yoasobi.jpg"
     },{
-        name: "Lemon",
-        artist: "Fujiii Kaze",
+        name: "Shinunoga E Wa",
+        artist: "Fuji Kaze",
         src: "music/jpop/shinunoga-fuji.mp3",
-        cover: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg",
-        bg: "img/aramajapan.com-7f044a76f47ccbdcb6dd3d7d650eebc26c381c30.jpeg"
+        ccover: "img/fujikaze.jpeg",
+        bg: "img/fujikaze.jpeg"
     },{
         name: "OTONABLUE",
         artist: "ATARASHII GAKKO",
