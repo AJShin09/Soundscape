@@ -114,7 +114,7 @@ const songList = [
     {
         name: "Namimiss Ko Na",
         artist: "Lola Amour",
-        src: "music/opm/Lola Amour - Namimiss Ko Na (Official Lyric Video).mp3",
+        src: "music/opm/Lola Amour - Namimiss Ko Na (Official Music Video).mp3",
         cover: "img/lola-amour.jpg",
         bg: "img/lola-amour.jpg"
     },
