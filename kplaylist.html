@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="stylenimax.css">
     <title>Korean Playlist Music Player</title>
 </head>
+
 <body>
     <div class="background">
-        <img src="taylor/folklore.jpg" id="bg">
+        <img src="" id="bg">
     </div>
     <div class="container">
         <div class="song-info">
             <div class="song-name">song name</div>
             <div class="artist-name">name</div>
-            
+
             <div class="progress-bar">
                 <div class="fill-bar"></div>
             </div>
             <div class="time">0:00 - 0:00</div>
         </div>
-        
+
         <div class="disk">
             <div id="cover" class="cover"></div>
         </div>
@@ -35,11 +37,8 @@
     <div class="exit">
         <i class="fa-regular fa-circle-xmark" id="back"></i>
     </div>
-
-
-
-
-    <script src="kscript.js"></script>
-
+    <meta name="genre" content="kpop">
+    <script src="player.js?genre=kpop"></script>
 </body>
+
 </html>

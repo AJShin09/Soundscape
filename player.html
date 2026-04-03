@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="stylenimax.css">
-    <title>Pinoy Playlist Music Player</title>
+    <title>Now Playing</title>
 </head>
 
 <body>
@@ -16,15 +15,13 @@
     </div>
     <div class="container">
         <div class="song-info">
-            <div class="song-name">song name</div>
-            <div class="artist-name">name</div>
-
+            <div class="song-name">Loading...</div>
+            <div class="artist-name">—</div>
             <div class="progress-bar">
                 <div class="fill-bar"></div>
             </div>
             <div class="time">0:00 - 0:00</div>
         </div>
-
         <div class="disk">
             <div id="cover" class="cover"></div>
         </div>
@@ -37,8 +34,7 @@
     <div class="exit">
         <i class="fa-regular fa-circle-xmark" id="back"></i>
     </div>
-    <meta name="genre" content="opm">
-    <script src="player.js?genre=opm"></script>
+    <script src="player.js"></script>
 </body>
 
 </html>
