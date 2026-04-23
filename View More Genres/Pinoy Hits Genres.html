@@ -7,85 +7,125 @@
      <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
      <link rel="stylesheet" href="../base.css">
-     <title>Pinoy Hits</title>
+     <title>Pinoy Hits — SOUNDSCAPE</title>
 </head>
 
 <body>
+
      <nav class="nav-bar">
-          <span class="brand-name">SOUNDSCAPE</span>
+          <div class="nav-bar-container">
+               <span class="brand-name">SOUNDSCAPE</span>
+          </div>
      </nav>
+
      <nav class="side-bar">
+          <div class="logo">
+               <a href="../index.html">
+                    <img src="../src/img/logo/logo.png" alt="SOUNDSCAPE logo">
+               </a>
+          </div>
+          <a href="../countries.html">
+               <div class="nav-icon-btn active">
+                    <span class="material-symbols-outlined">globe_asia</span>
+                    <span class="label">EXPLORE</span>
+               </div>
+          </a>
           <a href="../index.html">
                <div class="nav-icon-btn">
                     <span class="material-symbols-outlined">home</span>
                     <span class="label">HOME</span>
                </div>
           </a>
-          <a href="../countries.html">
-               <div class="nav-icon-btn">
-                    <span class="material-symbols-outlined">globe_asia</span>
-                    <span class="label">SEARCH</span>
-               </div>
-          </a>
      </nav>
 
      <div class="page-wrapper">
           <main class="main-contents">
+
+               <a class="back-link" onclick="history.back()">← Back</a>
+
                <div class="genre-header">
-                    <img src="cover-pinoyplaylist.jpg" alt="Pinoy Hits" class="cover-image">
+                    <img src="../src/img/genre profile/opmplay.jpg" alt="Pinoy Hits" class="cover-image">
                     <div class="header-text">
                          <h1>PINOY HITS</h1>
                          <p>OPM · PPOP · RNB · ROCK</p>
+                         <div class="song-count-badge" id="total-count">— songs</div>
                     </div>
                </div>
 
-               <div class="song-section">
+               <div class="genre-filter">
+                    <button class="genre-pill active" onclick="filterGenre('all', this)">All</button>
+                    <button class="genre-pill" onclick="filterGenre('OPM', this)">OPM</button>
+                    <button class="genre-pill" onclick="filterGenre('PPOP', this)">PPOP</button>
+                    <button class="genre-pill" onclick="filterGenre('RNB', this)">RNB</button>
+                    <button class="genre-pill" onclick="filterGenre('ROCK', this)">Rock</button>
+               </div>
+
+               <div class="song-section" id="section-opm">
                     <div class="section-label">OPM</div>
                     <div class="song-grid" id="opm-grid"></div>
                </div>
 
-               <div class="song-section">
+               <div class="song-section" id="section-ppop">
                     <div class="section-label">PPOP</div>
                     <div class="song-grid" id="ppop-grid"></div>
                </div>
 
-               <div class="song-section">
+               <div class="song-section" id="section-rnb">
                     <div class="section-label">RNB</div>
                     <div class="song-grid" id="rnb-grid"></div>
                </div>
 
-               <div class="song-section">
+               <div class="song-section" id="section-rock">
                     <div class="section-label">ROCK</div>
                     <div class="song-grid" id="rock-grid"></div>
                </div>
+
           </main>
      </div>
 
      <script>
+          const sectionMap = {
+               'OPM': { section: 'section-opm', grid: 'opm-grid' },
+               'PPOP': { section: 'section-ppop', grid: 'ppop-grid' },
+               'RNB': { section: 'section-rnb', grid: 'rnb-grid' },
+               'ROCK': { section: 'section-rock', grid: 'rock-grid' },
+          };
+
+          let totalSongs = 0;
+
           fetch('../songs.json')
                .then(res => res.json())
                .then(data => {
                     const songs = data.opm;
-                    const grids = {
-                         'OPM': document.getElementById('opm-grid'),
-                         'PPOP': document.getElementById('ppop-grid'),
-                         'RNB': document.getElementById('rnb-grid'),
-                         'ROCK': document.getElementById('rock-grid'),
-                    };
+                    totalSongs = songs.length;
+                    document.getElementById('total-count').textContent = `${totalSongs} songs`;
+
                     songs.forEach(song => {
-                         const grid = grids[song.subgenre];
-                         if (!grid) return;
+                         const entry = sectionMap[song.subgenre];
+                         if (!entry) return;
+                         const grid = document.getElementById(entry.grid);
                          const card = document.createElement('a');
                          card.href = `../player.html?genre=opm&id=${song.id}`;
                          card.className = 'song-card';
                          card.innerHTML = `
-                        <div class="thumb" style="background-image:url(../${song.cover})"></div>
-                        <div class="song-title">${song.name}</div>
-                        <div class="song-artist">${song.artist}</div>
-                    `;
+                              <div class="thumb" style="background-image:url('../${song.cover}')"></div>
+                              <div class="song-title">${song.name}</div>
+                              <div class="song-artist">${song.artist}</div>
+                         `;
                          grid.appendChild(card);
                     });
+               })
+               .catch(err => console.error('songs.json load error:', err));
+
+          function filterGenre(genre, btn) {
+               document.querySelectorAll('.genre-pill').forEach(p => p.classList.remove('active'));
+               btn.classList.add('active');
+
+               Object.entries(sectionMap).forEach(([key, val]) => {
+                    const section = document.getElementById(val.section);
+                    section.style.display = (genre === 'all' || genre === key) ? '' : 'none';
                });
+          }
      </script>
 </body>
 

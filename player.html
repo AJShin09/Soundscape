@@ -5,36 +5,1397 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="stylenimax.css">
-    <title>Now Playing</title>
+    <title>Now Playing — SOUNDSCAPE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --accent: #feda00;
+            --accent-dim: rgba(254, 218, 0, 0.10);
+            --accent-glow: rgba(254, 218, 0, 0.30);
+            --accent-hover: #ffe94d;
+            --bg: #0a0a0a;
+            --sidebar-bg: #111111;
+            --panel-bg: #161616;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(254, 218, 0, 0.20);
+            --text: #ffffff;
+            --text-sub: rgba(255, 255, 255, 0.70);
+            --text-muted: rgba(255, 255, 255, 0.36);
+            --bar-h: 88px;
+            --sidebar-w: 76px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: grid;
+            grid-template-rows: 1fr var(--bar-h);
+            grid-template-columns: var(--sidebar-w) 1fr 380px;
+            grid-template-areas:
+                "sidebar main queue"
+                "bar bar bar";
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            grid-area: sidebar;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 1rem;
+            gap: 0.25rem;
+            position: relative;
+            z-index: 20;
+        }
+
+        .sidebar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent) 0%, transparent 55%);
+            opacity: 0.25;
+        }
+
+        .sidebar-logo {
+            width: 42px;
+            height: 42px;
+            background: var(--accent-dim);
+            border: 1px solid var(--border-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .sidebar-logo:hover {
+            background: rgba(254, 218, 0, 0.16);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .sidebar-logo span {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .sidebar-btn {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 0 14px;
+            color: var(--text-muted);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .sidebar-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 0;
+            background: var(--accent);
+            border-radius: 0 2px 2px 0;
+            transition: height 0.2s;
+        }
+
+        .sidebar-btn:hover::before {
+            height: 60%;
+        }
+
+        .sidebar-btn i {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .sidebar-btn:hover i {
+            background: var(--accent);
+            color: #000;
+            transform: scale(1.08);
+        }
+
+        .sidebar-btn:hover {
+            color: var(--accent);
+        }
+
+        .sidebar-btn.active i {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .sidebar-btn.active {
+            color: var(--accent);
+        }
+
+        /* ── MAIN AREA ── */
+        .main {
+            grid-area: main;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* immersive blurred background */
+        .bg-blur {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-blur img {
+            position: absolute;
+            inset: -15%;
+            width: 130%;
+            height: 130%;
+            object-fit: cover;
+            filter: blur(80px) saturate(1.8) brightness(0.18);
+            transition: opacity 1s ease;
+        }
+
+        .bg-blur::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 40% 60%, rgba(254, 218, 0, 0.05) 0%, transparent 55%),
+                linear-gradient(to bottom, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.85) 100%);
+            pointer-events: none;
+        }
+
+        .main-inner {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 3rem;
+            gap: 0;
+            overflow-y: auto;
+        }
+
+        /* top bar */
+        .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 2rem;
+            z-index: 5;
+        }
+
+        .top-bar-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s;
+            font-family: 'DM Sans', sans-serif;
+            text-decoration: none;
+        }
+
+        .top-bar-btn:hover {
+            color: var(--accent);
+        }
+
+        .top-bar-btn i {
+            font-size: 0.8rem;
+        }
+
+        .top-bar-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 4px;
+            opacity: 0.6;
+            text-transform: uppercase;
+        }
+
+        /* ── ALBUM ART ── */
+        .art-wrapper {
+            width: min(280px, 55vw);
+            aspect-ratio: 1;
+            margin-bottom: 2rem;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .art-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
+            opacity: 0;
+            transition: opacity 0.6s;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .art-wrapper.playing::before {
+            opacity: 0.5;
+        }
+
+        #cover {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            background: #1c1c1c center/cover no-repeat;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow:
+                0 32px 80px rgba(0, 0, 0, 0.85),
+                0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s;
+        }
+
+        .art-wrapper.playing #cover {
+            transform: scale(1.03);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 60px rgba(254, 218, 0, 0.1);
+        }
+
+        /* ── SONG INFO ── */
+        .song-info {
+            width: 100%;
+            max-width: 340px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .song-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .song-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.15;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .artist-name {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-sub);
+            margin-top: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .like-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+            flex-shrink: 0;
+            margin-left: 12px;
+            margin-top: 4px;
+            background: none;
+            border: none;
+        }
+
+        .like-btn:hover {
+            color: var(--accent);
+            transform: scale(1.15);
+        }
+
+        .like-btn.liked {
+            color: var(--accent);
+        }
+
+        /* ── PROGRESS ── */
+        .progress-section {
+            width: 100%;
+            max-width: 340px;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 99px;
+            cursor: pointer;
+            position: relative;
+            transition: height 0.15s ease;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar:hover {
+            height: 6px;
+        }
+
+        .fill-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            border-radius: 99px;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .fill-bar::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: var(--text);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.15s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-bar:hover .fill-bar::after {
+            opacity: 1;
+        }
+
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.4px;
+        }
+
+        #time-current {
+            color: var(--text-muted);
+        }
+
+        #time-duration {
+            color: var(--text-muted);
+        }
+
+        /* ── CONTROLS ── */
+        .controls {
+            width: 100%;
+            max-width: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .ctrl-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.18s;
+            background: none;
+            border: none;
+            border-radius: 50%;
+        }
+
+        .ctrl-btn:hover {
+            color: var(--text);
+            transform: scale(1.12);
+        }
+
+        .ctrl-btn.active {
+            color: var(--accent);
+        }
+
+        #play {
+            width: 58px;
+            height: 58px;
+            background: var(--accent);
+            color: #000 !important;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem !important;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+            box-shadow: 0 6px 24px rgba(254, 218, 0, 0.45), 0 0 60px rgba(254, 218, 0, 0.08);
+            flex-shrink: 0;
+        }
+
+        #play:hover {
+            background: var(--accent-hover);
+            transform: scale(1.08);
+            box-shadow: 0 10px 34px rgba(254, 218, 0, 0.6), 0 0 80px rgba(254, 218, 0, 0.18);
+        }
+
+        #play:active {
+            transform: scale(0.94);
+        }
+
+        /* ── VOLUME ── */
+        .volume-row {
+            width: 100%;
+            max-width: 340px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-row i {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .volume-track {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 99px;
+            cursor: pointer;
+            position: relative;
+            overflow: visible;
+            transition: height 0.15s;
+        }
+
+        .volume-track:hover {
+            height: 5px;
+        }
+
+        .volume-fill {
+            height: 100%;
+            width: 80%;
+            background: var(--text-muted);
+            border-radius: 99px;
+            transition: background 0.2s, width 0.05s linear;
+        }
+
+        .volume-track:hover .volume-fill {
+            background: var(--accent);
+        }
+
+        /* ── QUEUE PANEL ── */
+        .queue {
+            grid-area: queue;
+            background: var(--panel-bg);
+            border-left: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .queue-header {
+            padding: 1.5rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .queue-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .queue-genre-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-dim);
+            border: 1px solid var(--border-accent);
+            color: var(--accent);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 99px;
+            margin-top: 6px;
+        }
+
+        .queue-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.5rem 0;
+        }
+
+        .queue-list::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .queue-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 99px;
+        }
+
+        .queue-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.6rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.15s;
+            position: relative;
+        }
+
+        .queue-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .queue-item.active {
+            background: rgba(254, 218, 0, 0.06);
+        }
+
+        .queue-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .q-thumb {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            background: #222 center/cover no-repeat;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .queue-item.active .q-thumb::after {
+            content: '▶';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+        }
+
+        .q-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .q-name {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .queue-item.active .q-name {
+            color: var(--accent);
+        }
+
+        .q-artist {
+            font-size: 0.67rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .q-num {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
+            width: 20px;
+            text-align: right;
+        }
+
+        .queue-item.active .q-num {
+            display: none;
+        }
+
+        /* ── BOTTOM BAR ── */
+        .playbar {
+            grid-area: bar;
+            background: rgba(12, 12, 12, 0.95);
+            border-top: 1px solid var(--border);
+            backdrop-filter: blur(24px);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            gap: 1rem;
+            z-index: 30;
+            position: relative;
+        }
+
+        .playbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent) 0%, transparent 35%);
+            opacity: 0.3;
+        }
+
+        .bar-song {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 260px;
+            flex-shrink: 0;
+        }
+
+        .bar-thumb {
+            width: 52px;
+            height: 52px;
+            border-radius: 6px;
+            background: #222 center/cover no-repeat;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            flex-shrink: 0;
+        }
+
+        .bar-text {
+            min-width: 0;
+        }
+
+        .bar-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 160px;
+        }
+
+        .bar-artist {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .bar-heart {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .bar-heart:hover {
+            color: var(--accent);
+        }
+
+        .bar-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bar-controls {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .bar-ctrl {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.15s;
+            background: none;
+            border: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .bar-ctrl:hover {
+            color: var(--text);
+            transform: scale(1.1);
+        }
+
+        .bar-ctrl.active {
+            color: var(--accent);
+        }
+
+        #bar-play {
+            width: 36px;
+            height: 36px;
+            background: var(--text);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        #bar-play:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .bar-progress {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bar-time {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            width: 32px;
+        }
+
+        .bar-time.right {
+            text-align: right;
+        }
+
+        .bar-track {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.10);
+            border-radius: 99px;
+            cursor: pointer;
+            transition: height 0.15s;
+        }
+
+        .bar-track:hover {
+            height: 5px;
+        }
+
+        .bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--text-muted);
+            border-radius: 99px;
+            transition: width 0.1s linear, background 0.2s;
+            pointer-events: none;
+        }
+
+        .bar-track:hover .bar-fill {
+            background: var(--accent);
+        }
+
+        .bar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 200px;
+            justify-content: flex-end;
+            flex-shrink: 0;
+        }
+
+        .bar-right i {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .bar-right i:hover {
+            color: var(--text);
+        }
+
+        .bar-vol-track {
+            width: 90px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.10);
+            border-radius: 99px;
+            cursor: pointer;
+            transition: height 0.15s;
+            position: relative;
+        }
+
+        .bar-vol-track:hover {
+            height: 5px;
+        }
+
+        .bar-vol-fill {
+            height: 100%;
+            width: 80%;
+            background: var(--text-muted);
+            border-radius: 99px;
+            transition: background 0.2s, width 0.05s linear;
+            pointer-events: none;
+        }
+
+        .bar-vol-track:hover .bar-vol-fill {
+            background: var(--accent);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .art-wrapper {
+            animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .song-info {
+            animation: cardIn 0.6s 0.08s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .controls {
+            animation: cardIn 0.6s 0.14s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            body {
+                grid-template-columns: var(--sidebar-w) 1fr;
+                grid-template-areas: "sidebar main" "bar bar";
+            }
+
+            .queue {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr var(--bar-h);
+                grid-template-areas: "main" "bar";
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            :root {
+                --bar-h: 72px;
+            }
+
+            .bar-song {
+                width: auto;
+            }
+
+            .bar-right {
+                display: none;
+            }
+        }
+
+        /* song name scroll animation when too long */
+        @keyframes marquee {
+
+            0%,
+            15% {
+                transform: translateX(0);
+            }
+
+            85%,
+            100% {
+                transform: translateX(var(--scroll-dist, -60px));
+            }
+        }
+
+        .song-name.scrolling {
+            animation: marquee 6s linear infinite;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="background">
-        <img src="" id="bg">
-    </div>
-    <div class="container">
-        <div class="song-info">
-            <div class="song-name">Loading...</div>
-            <div class="artist-name">—</div>
-            <div class="progress-bar">
-                <div class="fill-bar"></div>
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+        <div class="sidebar-logo" onclick="window.location.href='index.html'" title="Home">
+            <img src="src\img\logo\logo.png" alt="SOUNDSCAPE logo">
+        </div>
+        <a class="sidebar-btn" href="index.html" title="Home">
+            <i class="fa-solid fa-house"></i>
+            <span>HOME</span>
+        </a>
+        <a class="sidebar-btn active" href="#" title="Now Playing">
+            <i class="fa-solid fa-music"></i>
+            <span>NOW</span>
+        </a>
+        <a class="sidebar-btn" id="sidebar-playlist-btn" href="#" title="Playlist">
+            <i class="fa-solid fa-list"></i>
+            <span>LIST</span>
+        </a>
+    </nav>
+
+    <!-- MAIN VIEW -->
+    <main class="main">
+        <div class="bg-blur">
+            <img src="" id="bg" alt="">
+        </div>
+
+        <div class="top-bar">
+            <button class="top-bar-btn" id="back-btn">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </button>
+            <span class="top-bar-brand">SOUNDSCAPE</span>
+            <button class="top-bar-btn" id="playlist-btn">
+                Playlist <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="main-inner">
+            <div class="art-wrapper" id="art-wrapper">
+                <div id="cover" class="cover"></div>
             </div>
-            <div class="time">0:00 - 0:00</div>
+
+            <div class="song-info">
+                <div class="song-text">
+                    <div class="song-name">Loading…</div>
+                    <div class="artist-name">—</div>
+                </div>
+                <button class="like-btn" id="like-btn" title="Like">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="fill-bar" id="fill-bar"></div>
+                </div>
+                <div class="time-row">
+                    <span id="time-current">0:00</span>
+                    <span id="time-duration">0:00</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="ctrl-btn" id="shuffle-btn" title="Shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+                <button class="ctrl-btn" id="prev" title="Previous">
+                    <i class="fa-solid fa-backward-step"></i>
+                </button>
+                <button id="play" title="Play/Pause">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <button class="ctrl-btn" id="next" title="Next">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+                <button class="ctrl-btn" id="repeat-btn" title="Repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+            </div>
+
+            <div class="volume-row">
+                <i class="fa-solid fa-volume-low"></i>
+                <div class="volume-track" id="vol-track">
+                    <div class="volume-fill" id="vol-fill"></div>
+                </div>
+                <i class="fa-solid fa-volume-high"></i>
+            </div>
         </div>
-        <div class="disk">
-            <div id="cover" class="cover"></div>
+    </main>
+
+    <!-- QUEUE PANEL -->
+    <aside class="queue">
+        <div class="queue-header">
+            <div class="queue-title">Up Next</div>
+            <div class="queue-genre-badge" id="queue-genre-badge">
+                <i class="fa-solid fa-circle-dot" style="font-size:0.5rem"></i>
+                <span id="genre-label">—</span>
+            </div>
         </div>
-        <div class="controls">
-            <i id="prev" class="prev-btn fa-solid fa-backward"></i>
-            <i id="play" class="play-btn fa-solid fa-play"></i>
-            <i id="next" class="next-btn fa-solid fa-forward"></i>
+        <div class="queue-list" id="queue-list"></div>
+    </aside>
+
+    <!-- BOTTOM BAR -->
+    <footer class="playbar">
+        <div class="bar-song">
+            <div class="bar-thumb" id="bar-thumb"></div>
+            <div class="bar-text">
+                <div class="bar-title" id="bar-title">—</div>
+                <div class="bar-artist" id="bar-artist">—</div>
+            </div>
+            <i class="bar-heart fa-regular fa-heart" id="bar-heart"></i>
         </div>
-    </div>
-    <div class="exit">
-        <i class="fa-regular fa-circle-xmark" id="back"></i>
-    </div>
-    <script src="player.js"></script>
+
+        <div class="bar-center">
+            <div class="bar-controls">
+                <button class="bar-ctrl" id="bar-shuffle"><i class="fa-solid fa-shuffle"></i></button>
+                <button class="bar-ctrl" id="bar-prev"><i class="fa-solid fa-backward-step"></i></button>
+                <button id="bar-play"><i class="fa-solid fa-play"></i></button>
+                <button class="bar-ctrl" id="bar-next"><i class="fa-solid fa-forward-step"></i></button>
+                <button class="bar-ctrl" id="bar-repeat"><i class="fa-solid fa-repeat"></i></button>
+            </div>
+            <div class="bar-progress">
+                <span class="bar-time" id="bar-time-cur">0:00</span>
+                <div class="bar-track" id="bar-track">
+                    <div class="bar-fill" id="bar-fill"></div>
+                </div>
+                <span class="bar-time right" id="bar-time-dur">0:00</span>
+            </div>
+        </div>
+
+        <div class="bar-right">
+            <i class="fa-solid fa-volume-high" id="bar-vol-icon"></i>
+            <div class="bar-vol-track" id="bar-vol-track">
+                <div class="bar-vol-fill" id="bar-vol-fill"></div>
+            </div>
+            <span style="font-size:0.62rem;color:var(--text-muted)" id="song-counter"></span>
+        </div>
+    </footer>
+
+    <script>
+        // ── URL params ──
+        const params = new URLSearchParams(window.location.search);
+        const genreParam = (params.get('genre') || 'opm').toLowerCase();
+        const idParam = params.get('id');
+
+        // ── DOM ──
+        const coverEl = document.getElementById('cover');
+        const bgEl = document.getElementById('bg');
+        const playBtn = document.getElementById('play');
+        const barPlayBtn = document.getElementById('bar-play');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const barPrevBtn = document.getElementById('bar-prev');
+        const barNextBtn = document.getElementById('bar-next');
+        const fillBar = document.getElementById('fill-bar');
+        const barFill = document.getElementById('bar-fill');
+        const progressBar = document.getElementById('progress-bar');
+        const barTrack = document.getElementById('bar-track');
+        const timeCur = document.getElementById('time-current');
+        const timeDur = document.getElementById('time-duration');
+        const barTimeCur = document.getElementById('bar-time-cur');
+        const barTimeDur = document.getElementById('bar-time-dur');
+        const songNameEl = document.querySelector('.song-name');
+        const artistNameEl = document.querySelector('.artist-name');
+        const barTitle = document.getElementById('bar-title');
+        const barArtist = document.getElementById('bar-artist');
+        const barThumb = document.getElementById('bar-thumb');
+        const queueList = document.getElementById('queue-list');
+        const genreLabel = document.getElementById('genre-label');
+        const artWrapper = document.getElementById('art-wrapper');
+        const counterEl = document.getElementById('song-counter');
+        const volTrack = document.getElementById('vol-track');
+        const volFill = document.getElementById('vol-fill');
+        const barVolTrack = document.getElementById('bar-vol-track');
+        const barVolFill = document.getElementById('bar-vol-fill');
+        const shuffleBtn = document.getElementById('shuffle-btn');
+        const barShuffle = document.getElementById('bar-shuffle');
+        const repeatBtn = document.getElementById('repeat-btn');
+        const barRepeat = document.getElementById('bar-repeat');
+        const likeBtn = document.getElementById('like-btn');
+        const barHeart = document.getElementById('bar-heart');
+
+        let songList = [], song = new Audio(), currentSong = 0, playing = false;
+        let shuffle = false, repeat = false, volume = 0.8;
+
+        song.volume = volume;
+
+        const fmt = t => `${Math.floor(t / 60)}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+
+        const genreNames = { opm: 'PINOY HITS', kpop: 'KOREAN HITS', jpop: 'JAPAN HITS' };
+        genreLabel.textContent = genreNames[genreParam] || genreParam.toUpperCase();
+
+        // ── FETCH SONGS ──
+        fetch('songs.json')
+            .then(r => r.json())
+            .then(data => {
+                songList = data[genreParam] || data['opm'];
+                if (idParam) {
+                    const idx = songList.findIndex(s => s.id === idParam);
+                    if (idx !== -1) currentSong = idx;
+                }
+                buildQueue();
+                loadSong(currentSong);
+                song.addEventListener('timeupdate', updateProgress);
+                song.addEventListener('ended', onEnded);
+            })
+            .catch(err => { songNameEl.textContent = 'Error loading songs'; console.error(err); });
+
+        // ── LOAD SONG ──
+        function loadSong(index) {
+            const s = songList[index];
+            if (!s) return;
+            song.src = s.src;
+            songNameEl.textContent = s.name;
+            artistNameEl.textContent = s.artist;
+            barTitle.textContent = s.name;
+            barArtist.textContent = s.artist;
+            coverEl.style.backgroundImage = `url('${s.cover}')`;
+            barThumb.style.backgroundImage = `url('${s.cover}')`;
+            bgEl.src = s.bg || s.cover;
+            document.title = `${s.name} — ${s.artist} | SOUNDSCAPE`;
+            if (counterEl) counterEl.textContent = `${index + 1} / ${songList.length}`;
+            updateQueueActive(index);
+            // marquee if too long
+            songNameEl.classList.remove('scrolling');
+            setTimeout(() => {
+                if (songNameEl.scrollWidth > songNameEl.clientWidth + 4) {
+                    const dist = songNameEl.scrollWidth - songNameEl.clientWidth;
+                    songNameEl.style.setProperty('--scroll-dist', `-${dist}px`);
+                    songNameEl.classList.add('scrolling');
+                }
+            }, 400);
+        }
+
+        // ── QUEUE ──
+        function buildQueue() {
+            queueList.innerHTML = '';
+            songList.forEach((s, i) => {
+                const item = document.createElement('div');
+                item.className = 'queue-item' + (i === currentSong ? ' active' : '');
+                item.innerHTML = `
+                <div class="q-thumb" style="background-image:url('${s.cover}')"></div>
+                <div class="q-info">
+                    <div class="q-name">${s.name}</div>
+                    <div class="q-artist">${s.artist}</div>
+                </div>
+                <span class="q-num">${i + 1}</span>
+            `;
+                item.addEventListener('click', () => {
+                    currentSong = i;
+                    loadSong(currentSong);
+                    song.play().catch(() => { });
+                    setPlaying(true);
+                });
+                queueList.appendChild(item);
+            });
+        }
+
+        function updateQueueActive(index) {
+            document.querySelectorAll('.queue-item').forEach((el, i) => {
+                el.classList.toggle('active', i === index);
+            });
+            // scroll active item into view
+            const active = queueList.querySelector('.queue-item.active');
+            if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+
+        // ── PLAY / PAUSE ──
+        function setPlaying(state) {
+            playing = state;
+            const iconClass = state ? 'fa-pause' : 'fa-play';
+            playBtn.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+            barPlayBtn.innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+            artWrapper.classList.toggle('playing', state);
+        }
+
+        function togglePlayPause() {
+            if (playing) { song.pause(); setPlaying(false); }
+            else { song.play().catch(() => { }); setPlaying(true); }
+        }
+
+        playBtn.addEventListener('click', togglePlayPause);
+        barPlayBtn.addEventListener('click', togglePlayPause);
+
+        // ── PREV / NEXT ──
+        function prevSong() {
+            if (shuffle) { currentSong = Math.floor(Math.random() * songList.length); }
+            else { currentSong = currentSong === 0 ? songList.length - 1 : currentSong - 1; }
+            loadSong(currentSong);
+            if (playing) song.play().catch(() => { });
+        }
+        function nextSong() {
+            if (shuffle) { currentSong = Math.floor(Math.random() * songList.length); }
+            else { currentSong = currentSong === songList.length - 1 ? 0 : currentSong + 1; }
+            loadSong(currentSong);
+            if (playing) song.play().catch(() => { });
+        }
+        function onEnded() {
+            if (repeat) { song.currentTime = 0; song.play().catch(() => { }); }
+            else nextSong();
+        }
+
+        prevBtn.addEventListener('click', prevSong);
+        nextBtn.addEventListener('click', nextSong);
+        barPrevBtn.addEventListener('click', prevSong);
+        barNextBtn.addEventListener('click', nextSong);
+
+        // ── PROGRESS ──
+        function updateProgress() {
+            const { duration, currentTime } = song;
+            if (!duration) return;
+            const pct = (currentTime / duration) * 100;
+            fillBar.style.width = `${pct}%`;
+            barFill.style.width = `${pct}%`;
+            timeCur.textContent = fmt(currentTime);
+            barTimeCur.textContent = fmt(currentTime);
+            if (timeDur.textContent === '0:00') {
+                timeDur.textContent = fmt(duration);
+                barTimeDur.textContent = fmt(duration);
+            }
+        }
+
+        song.addEventListener('durationchange', () => {
+            if (song.duration) {
+                timeDur.textContent = fmt(song.duration);
+                barTimeDur.textContent = fmt(song.duration);
+            }
+        });
+
+        function seek(e, el) {
+            if (song.duration) song.currentTime = (e.offsetX / el.clientWidth) * song.duration;
+        }
+        progressBar.addEventListener('click', e => seek(e, progressBar));
+        barTrack.addEventListener('click', e => seek(e, barTrack));
+
+        // ── VOLUME ──
+        function setVolume(v) {
+            volume = Math.max(0, Math.min(1, v));
+            song.volume = volume;
+            volFill.style.width = `${volume * 100}%`;
+            barVolFill.style.width = `${volume * 100}%`;
+        }
+        volTrack.addEventListener('click', e => setVolume(e.offsetX / volTrack.clientWidth));
+        barVolTrack.addEventListener('click', e => setVolume(e.offsetX / barVolTrack.clientWidth));
+
+        // ── SHUFFLE / REPEAT / LIKE ──
+        shuffleBtn.addEventListener('click', () => {
+            shuffle = !shuffle;
+            shuffleBtn.classList.toggle('active', shuffle);
+            barShuffle.classList.toggle('active', shuffle);
+        });
+        barShuffle.addEventListener('click', () => shuffleBtn.click());
+
+        repeatBtn.addEventListener('click', () => {
+            repeat = !repeat;
+            repeatBtn.classList.toggle('active', repeat);
+            barRepeat.classList.toggle('active', repeat);
+        });
+        barRepeat.addEventListener('click', () => repeatBtn.click());
+
+        function toggleLike() {
+            likeBtn.classList.toggle('liked');
+            barHeart.classList.toggle('liked');
+            const icon = likeBtn.classList.contains('liked') ? 'fa-solid' : 'fa-regular';
+            likeBtn.innerHTML = `<i class="${icon} fa-heart"></i>`;
+            barHeart.className = `bar-heart ${icon} fa-heart` + (likeBtn.classList.contains('liked') ? ' liked' : '');
+        }
+        likeBtn.addEventListener('click', toggleLike);
+        barHeart.addEventListener('click', toggleLike);
+
+        // ── NAVIGATION ──
+        const pageMap = { opm: 'View More Genres/Pinoy Hits Genres.html', kpop: 'View More Genres/Korean Hits Genres.html', jpop: 'View More Genres/Japan Hits Genres.html' };
+        document.getElementById('back-btn').addEventListener('click', () => window.history.back());
+        document.getElementById('playlist-btn').addEventListener('click', () => {
+            window.location.href = pageMap[genreParam] || 'index.html';
+        });
+        document.getElementById('sidebar-playlist-btn').addEventListener('click', e => {
+            e.preventDefault();
+            window.location.href = pageMap[genreParam] || 'index.html';
+        });
+
+        // ── KEYBOARD ──
+        document.addEventListener('keydown', e => {
+            if (e.target.tagName === 'INPUT') return;
+            if (e.code === 'Space') { e.preventDefault(); togglePlayPause(); }
+            else if (e.code === 'ArrowLeft') prevSong();
+            else if (e.code === 'ArrowRight') nextSong();
+            else if (e.code === 'ArrowUp') setVolume(volume + 0.05);
+            else if (e.code === 'ArrowDown') setVolume(volume - 0.05);
+        });
+
+        // init volume display
+        setVolume(0.8);
+    </script>
 </body>
 
 </html>

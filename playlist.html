@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="stylenimax.css">
-    <meta name="genre" content="kpop">
-    <title>Korean Playlist — SOUNDSCAPE</title>
+    <link rel="stylesheet" href="player.css">
+    <title>Now Playing</title>
 </head>
 
 <body>
-    <div class="background"><img src="" id="bg" alt=""></div>
+    <div class="background">
+        <img src="" id="bg" alt="">
+    </div>
     <div class="container">
         <div class="song-info">
             <div class="song-name">Loading…</div>
@@ -25,16 +26,15 @@
             <div id="cover" class="cover"></div>
         </div>
         <div class="controls">
-            <i id="prev" class="prev-btn fa-solid fa-backward"></i>
-            <i id="play" class="play-btn fa-solid fa-play"></i>
-            <i id="next" class="next-btn fa-solid fa-forward"></i>
+            <i id="prev" class="fa-solid fa-backward"></i>
+            <i id="play" class="fa-solid fa-play"></i>
+            <i id="next" class="fa-solid fa-forward"></i>
         </div>
     </div>
-    <div class="exit"><i class="fa-regular fa-circle-xmark" id="back"></i></div>
+    <div class="exit">
+        <i class="fa-regular fa-circle-xmark" id="back"></i>
+    </div>
     <script src="player.js"></script>
-    <script>
-        document.getElementById('back').addEventListener('click', () => window.history.back());
-    </script>
 </body>
 
 </html>

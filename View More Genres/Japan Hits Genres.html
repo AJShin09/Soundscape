@@ -7,85 +7,122 @@
      <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
      <link rel="stylesheet" href="../base.css">
-     <title>Japan Hits</title>
+     <title>Japan Hits — SOUNDSCAPE</title>
 </head>
 
 <body>
+
      <nav class="nav-bar">
-          <span class="brand-name">SOUNDSCAPE</span>
+          <div class="nav-bar-container">
+               <span class="brand-name">SOUNDSCAPE</span>
+          </div>
      </nav>
+
      <nav class="side-bar">
+          <div class="logo">
+               <a href="../index.html">
+                    <img src="../src/img/logo/logo.png" alt="SOUNDSCAPE logo">
+               </a>
+          </div>
+          <a href="../countries.html">
+               <div class="nav-icon-btn active">
+                    <span class="material-symbols-outlined">globe_asia</span>
+                    <span class="label">EXPLORE</span>
+               </div>
+          </a>
           <a href="../index.html">
                <div class="nav-icon-btn">
                     <span class="material-symbols-outlined">home</span>
                     <span class="label">HOME</span>
                </div>
           </a>
-          <a href="../countries.html">
-               <div class="nav-icon-btn">
-                    <span class="material-symbols-outlined">globe_asia</span>
-                    <span class="label">SEARCH</span>
-               </div>
-          </a>
      </nav>
 
      <div class="page-wrapper">
           <main class="main-contents">
+
+               <a class="back-link" onclick="history.back()">← Back</a>
+
                <div class="genre-header">
-                    <img src="cover-pinoyplaylist.jpg" alt="Japan Hits" class="cover-image">
+                    <img src="../src/img/genre profile/jpopplay.jpg" alt="Japan Hits" class="cover-image">
                     <div class="header-text">
                          <h1>JAPAN HITS</h1>
                          <p>JPM · JPOP · CITY POP · JAPAN ROCK</p>
+                         <div class="song-count-badge" id="total-count">— songs</div>
                     </div>
                </div>
 
-               <div class="song-section">
+               <div class="genre-filter">
+                    <button class="genre-pill active" onclick="filterGenre('all', this)">All</button>
+                    <button class="genre-pill" onclick="filterGenre('JPM', this)">JPM</button>
+                    <button class="genre-pill" onclick="filterGenre('JPOP', this)">JPOP</button>
+                    <button class="genre-pill" onclick="filterGenre('CITY POP', this)">City Pop</button>
+                    <button class="genre-pill" onclick="filterGenre('JAPAN ROCK', this)">Japan Rock</button>
+               </div>
+
+               <div class="song-section" id="section-jpm">
                     <div class="section-label">JPM</div>
                     <div class="song-grid" id="jpm-grid"></div>
                </div>
 
-               <div class="song-section">
+               <div class="song-section" id="section-jpop">
                     <div class="section-label">JPOP</div>
                     <div class="song-grid" id="jpop-grid"></div>
                </div>
 
-               <div class="song-section">
+               <div class="song-section" id="section-citypop">
                     <div class="section-label">CITY POP</div>
                     <div class="song-grid" id="citypop-grid"></div>
                </div>
 
-               <div class="song-section">
+               <div class="song-section" id="section-japanrock">
                     <div class="section-label">JAPAN ROCK</div>
                     <div class="song-grid" id="japanrock-grid"></div>
                </div>
+
           </main>
      </div>
 
      <script>
+          const sectionMap = {
+               'JPM': { section: 'section-jpm', grid: 'jpm-grid' },
+               'JPOP': { section: 'section-jpop', grid: 'jpop-grid' },
+               'CITY POP': { section: 'section-citypop', grid: 'citypop-grid' },
+               'JAPAN ROCK': { section: 'section-japanrock', grid: 'japanrock-grid' },
+          };
+
           fetch('../songs.json')
                .then(res => res.json())
                .then(data => {
                     const songs = data.jpop;
-                    const grids = {
-                         'JPM': document.getElementById('jpm-grid'),
-                         'JPOP': document.getElementById('jpop-grid'),
-                         'CITY POP': document.getElementById('citypop-grid'),
-                         'JAPAN ROCK': document.getElementById('japanrock-grid'),
-                    };
+                    document.getElementById('total-count').textContent = `${songs.length} songs`;
+
                     songs.forEach(song => {
-                         const grid = grids[song.subgenre];
-                         if (!grid) return;
+                         const entry = sectionMap[song.subgenre];
+                         if (!entry) return;
+                         const grid = document.getElementById(entry.grid);
                          const card = document.createElement('a');
                          card.href = `../player.html?genre=jpop&id=${song.id}`;
                          card.className = 'song-card';
                          card.innerHTML = `
-                        <div class="thumb" style="background-image:url(../${song.cover})"></div>
-                        <div class="song-title">${song.name}</div>
-                        <div class="song-artist">${song.artist}</div>
-                    `;
+                              <div class="thumb" style="background-image:url('../${song.cover}')"></div>
+                              <div class="song-title">${song.name}</div>
+                              <div class="song-artist">${song.artist}</div>
+                         `;
                          grid.appendChild(card);
                     });
+               })
+               .catch(err => console.error('songs.json load error:', err));
+
+          function filterGenre(genre, btn) {
+               document.querySelectorAll('.genre-pill').forEach(p => p.classList.remove('active'));
+               btn.classList.add('active');
+
+               Object.entries(sectionMap).forEach(([key, val]) => {
+                    const section = document.getElementById(val.section);
+                    section.style.display = (genre === 'all' || genre === key) ? '' : 'none';
                });
+          }
      </script>
 </body>
 

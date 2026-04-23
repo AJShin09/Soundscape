@@ -6,199 +6,278 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
-    <link rel="stylesheet" href="countries.css">
+    <link rel="stylesheet" href="base.css">
+    <title>SOUNDSCAPE — Explore</title>
+    <style>
+        /* ── Centered content wrapper ── */
+        .content-center {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    <title>COUNTRIES</title>
+        /* ── Explore header: no extra left padding now that wrapper handles it ── */
+        .explore-header {
+            padding: 2.25rem 0 1.25rem;
+        }
+
+        /* ── Region tabs flush to wrapper ── */
+        .region-tabs {
+            padding: 0 0 0.25rem;
+        }
+
+        /* ── Slideshow section flush ── */
+        .slideshow-section {
+            padding: 1.25rem 0;
+        }
+
+        /* ── Slideshow container: full width of wrapper, no extra max-width cap conflicts ── */
+        .slideshow-container {
+            max-width: 100%;
+        }
+
+        /* ── Cards grid flush ── */
+        .country-selection {
+            padding: 1.5rem 0 3rem;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* ── Responsive adjustments ── */
+        @media (max-width: 1100px) {
+            .country-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .content-center {
+                padding: 0 1.25rem;
+            }
+
+            .country-selection {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!--top-bar dsiplay-->
+
+    <!-- top nav -->
     <nav class="nav-bar">
         <div class="nav-bar-container">
-            <p class="brand-name">SOUNDSCAPE</p>
-            <span class="material-symbols-outlined">
-                <div class="profile-btn">
-                    person
-            </span>
-        </div>
+            <span class="brand-name">SOUNDSCAPE</span>
         </div>
     </nav>
-    <!--side-bar diplay-->
+
+    <!-- sidebar -->
     <nav class="side-bar">
         <div class="logo">
-            <a class="link" href="index.html">
-                <img src="img/image/logo.png" alt="LOGO">
+            <a href="index.html">
+                <img src="src/img/logo/logo.png" alt="SOUNDSCAPE logo">
             </a>
         </div>
-        <!--side-bar icons-->
-        <span class="material-symbols-outlined">
-            <a href="countries.html">
-                <div class="search-btn">
-                    globe_asia
-                </div>
-            </a>
-        </span>
 
-        <b class="undertext-search">
-            SEARCH
-        </b>
+        <a href="countries.html">
+            <div class="nav-icon-btn">
+                <span class="material-symbols-outlined">globe_asia</span>
+                <span class="label">EXPLORE</span>
+            </div>
+        </a>
 
-        <span class="material-symbols-outlined">
-            <a href="index.html">
-                <div class="home-btn">
-                    home
-                </div>
-            </a>
-        </span>
-        <b class="undertext-home">
-            HOME
-        </b>
-
-        <span class="material-symbols-outlined">
-            <a href="#">
-                <div class="fav-btn">
-                    contrast
-                </div>
-            </a>
-        </span>
-
-        <b class="undertext-modes">
-            MODE
-        </b>
+        <a href="index.html">
+            <div class="nav-icon-btn">
+                <span class="material-symbols-outlined">home</span>
+                <span class="label">HOME</span>
+            </div>
+        </a>
     </nav>
 
-    <div class="slideshow-section">
-        <div class="slideshow-container">
-            <div class="mySlides">
-                <img class="pop-cover" src="image/ppop-cover.jpg" style="width:100%">
-                <div class="text">PINOY MUSIC</div>
-                <div class="subtext">Discover the vibrant sounds of Filipino pop and OPM hits</div>
+    <div class="page-wrapper">
+        <div class="content-center">
+
+            <!-- Explore Header -->
+            <div class="explore-header">
+                <div class="explore-eyebrow">Discover Music By Region</div>
+                <h1 class="explore-title">ASIAN <span>HITS</span></h1>
             </div>
 
-            <div class="mySlides">
-                <img class="pop-cover" src="image/kpop-cover.jpg" style="width:100%">
-                <div class="text">KOREAN MUSIC</div>
-                <div class="subtext">Experience the latest K-pop, K-R&B, and Korean chart-toppers</div>
+            <!-- Region filter tabs -->
+            <div class="region-tabs">
+                <button class="region-tab active" onclick="filterCards('all', this)">All Regions</button>
+                <button class="region-tab" onclick="filterCards('pinoy', this)">Pinoy</button>
+                <button class="region-tab" onclick="filterCards('korean', this)">Korean</button>
+                <button class="region-tab" onclick="filterCards('japan', this)">Japan</button>
+                <button class="region-tab" onclick="filterCards('indian', this)">Indian</button>
             </div>
 
-            <div class="mySlides">
-                <img class="pop-cover" src="image/jpop-cover.jpg" style="width:100%">
-                <div class="text">JAPAN MUSIC</div>
-                <div class="subtext">Explore J-pop, vocaloids, and contemporary Japanese artists</div>
+            <!-- Slideshow -->
+            <div class="slideshow-section">
+                <div class="slideshow-container">
+                    <div class="mySlides active">
+                        <img class="pop-cover" src="src/img/genre cover/ppop-cover.jpg" alt="Pinoy Music">
+                        <div class="slide-badge">🇵🇭 Featured</div>
+                        <div class="text">PINOY MUSIC</div>
+                        <div class="subtext">Discover the vibrant sounds of Filipino pop and OPM hits</div>
+                    </div>
+                    <div class="mySlides">
+                        <img class="pop-cover" src="src/img/genre cover/kpop-cover.jpg" alt="Korean Music">
+                        <div class="slide-badge">🇰🇷 Featured</div>
+                        <div class="text">KOREAN MUSIC</div>
+                        <div class="subtext">Experience the latest K-pop, K-R&B, and Korean chart-toppers</div>
+                    </div>
+                    <div class="mySlides">
+                        <img class="pop-cover" src="src/img/genre cover/jpop-cover.jpg" alt="Japan Music">
+                        <div class="slide-badge">🇯🇵 Featured</div>
+                        <div class="text">JAPAN MUSIC</div>
+                        <div class="subtext">Explore J-pop, City Pop, and contemporary Japanese artists</div>
+                    </div>
+                    <div class="mySlides">
+                        <img class="pop-cover" src="src/img/genre cover/ipop-cover.jpg" alt="Indian Music">
+                        <div class="slide-badge">🇮🇳 Coming Soon</div>
+                        <div class="text">INDIAN MUSIC</div>
+                        <div class="subtext">Listen to Bollywood hits, indie tracks, and Indian pop sensations</div>
+                    </div>
+                    <button class="prev" onclick="plusSlides(-1)" aria-label="Previous">&#10094;</button>
+                    <button class="next" onclick="plusSlides(1)" aria-label="Next">&#10095;</button>
+                </div>
+                <div class="dots-row">
+                    <button class="dot active" onclick="currentSlide(1)" aria-label="Slide 1"></button>
+                    <button class="dot" onclick="currentSlide(2)" aria-label="Slide 2"></button>
+                    <button class="dot" onclick="currentSlide(3)" aria-label="Slide 3"></button>
+                    <button class="dot" onclick="currentSlide(4)" aria-label="Slide 4"></button>
+                </div>
             </div>
 
-            <div class="mySlides">
-                <img class="pop-cover" src="image/ipop-cover.jpg" style="width:100%">
-                <div class="text">INDIAN MUSIC</div>
-                <div class="subtext">Listen to Bollywood hits, indie tracks, and Indian pop sensations</div>
-            </div>
+            <!-- Country Cards -->
+            <div class="country-selection" id="cards-container">
 
-            <center class="center-this">
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </center>
-        </div>
+                <!-- Pinoy -->
+                <div class="country-card" data-region="pinoy">
+                    <div class="card-flag-row">
+                        <div class="hit-text">Pinoy Hits</div>
+                        <span class="country-badge">🇵🇭 PH</span>
+                    </div>
+                    <div class="containers">
+                        <div class="select-container-1">
+                            <div>
+                                <img class="vis-hit-icon" src="src/img/countries cover/opm1.jpg" alt="OPM">
+                                <img class="hit-icon" src="src/img/countries cover/opm2.jpg" alt="OPM hover">
+                            </div>
+                        </div>
+                        <div class="select-container-2">
+                            <div>
+                                <img class="vis-hit-icon" src="src/img/countries cover/ppop1.jpg" alt="PPOP">
+                                <img class="hit-icon" src="src/img/countries cover/ppop2.jpg" alt="PPOP hover">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="genre-labels">
+                        <span class="title-1">OPM</span>
+                        <span class="title-1">PPOP</span>
+                    </div>
+                    <a class="view-link" href="View More Genres/Pinoy Hits Genres.html">
+                        <div class="view-more">View All Genres →</div>
+                    </a>
+                </div>
+
+                <!-- Korean -->
+                <div class="country-card" data-region="korean">
+                    <div class="card-flag-row">
+                        <div class="hit-text">Korean Hits</div>
+                        <span class="country-badge">🇰🇷 KR</span>
+                    </div>
+                    <div class="containers">
+                        <div class="select-container-1">
+                            <div>
+                                <img class="vis-hit-icon" src="src/img/countries cover/krnb1.jpg" alt="KRNB">
+                                <img class="hit-icon" src="src/img/countries cover/krnb2.jpg" alt="KRNB hover">
+                            </div>
+                        </div>
+                        <div class="select-container-2">
+                            <div>
+                                <img class="vis-hit-icon" src="src/img/countries cover/kpop1.jpg" alt="KPOP">
+                                <img class="hit-icon" src="src/img/countries cover/kpop2.jpg" alt="KPOP hover">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="genre-labels">
+                        <span class="title-1">KRNB</span>
+                        <span class="title-1">KPOP</span>
+                    </div>
+                    <a class="view-link" href="View More Genres/Korean Hits Genres.html">
+                        <div class="view-more">View All Genres →</div>
+                    </a>
+                </div>
+
+                <!-- Japan -->
+                <div class="country-card" data-region="japan">
+                    <div class="card-flag-row">
+                        <div class="hit-text">Japan Hits</div>
+                        <span class="country-badge">🇯🇵 JP</span>
+                    </div>
+                    <div class="containers">
+                        <div class="select-container-1">
+                            <div>
+                                <img class="vis-hit-icon" src="src/img/countries cover/jrock1.jpg" alt="Vocaloids">
+                                <img class="hit-icon" src="src/img/countries cover/jrock2.jpg" alt="Vocaloids hover">
+                            </div>
+                        </div>
+                        <div class="select-container-2">
+                            <div>
+                                <img class="vis-hit-icon" src="src/img/countries cover/jpop1.jpg" alt="JPOP">
+                                <img class="hit-icon" src="src/img/countries cover/jpop2.jpg" alt="JPOP hover">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="genre-labels">
+                        <span class="title-1">Vocaloids</span>
+                        <span class="title-1">JPOP</span>
+                    </div>
+                    <a class="view-link" href="View More Genres/Japan Hits Genres.html">
+                        <div class="view-more">View All Genres →</div>
+                    </a>
+                </div>
+
+                <!-- Indian (Coming Soon) -->
+                <div class="country-card coming-soon-card" data-region="indian">
+                    <div class="card-flag-row">
+                        <div class="hit-text">Indian Hits</div>
+                        <span class="coming-soon-badge">Coming Soon</span>
+                    </div>
+                    <div
+                        style="text-align:center; padding: 2rem 0; color: var(--text-muted); font-size: 0.82rem; letter-spacing: 0.5px; line-height: 2;">
+                        <br>Bollywood &amp; Indie<br>content coming soon<br><br>
+                    </div>
+                    <a class="view-link" href="View More Genres/Indian Hits Genres.html">
+                        <div class="view-more" style="opacity:0.35; pointer-events:none; cursor:default;">View All
+                            Genres →
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div><!-- end content-center -->
     </div>
 
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-    </div>
+    <script src="script.js"></script>
+    <script>
+        function filterCards(region, btn) {
+            document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
 
-    <div class="country-selection">
-
-        <div class="genre-selection">
-            <div class="hit-text">Pinoy Hits</div>
-            <div class="containers">
-
-                <div class="select-container-1">
-                    <div>
-                        <!--container #1 image insert-->
-                        <img class="vis-hit-icon" src="countries/opm1.jpg" style="width:100%;">
-                        <img class="hit-icon" src="countries/opm2.jpg" style="width:100%">
-                    </div>
-                    <div class="title-1">OPM</div>
-                </div>
-
-                <div class="select-container-2">
-                    <div>
-                        <!--container #2 image insert-->
-                        <img class="vis-hit-icon" src="countries/ppop1.jpg" style="width:100%;">
-                        <img class="hit-icon" src="countries/ppop2.jpg" style="width:100%">
-                    </div>
-                    <div class="title-1">PPOP</div>
-                </div>
-
-            </div>
-            <!--link to other page-->
-            <a class="view-link" href="Pinoy Hits Genres.html">
-                <div class="view-more">View More Genres</div>
-            </a>
-        </div>
-
-        <div class="genre-selection">
-            <div class="hit-text">Korean Hits</div>
-            <div class="containers">
-
-                <div class="select-container-1">
-                    <div>
-                        <!--container #1 image insert-->
-                        <img class="vis-hit-icon" src="countries/krnb1.jpg" style="width:100%;">
-                        <img class="hit-icon" src="countries/krnb2.jpg" style="width:100%">
-                    </div>
-                    <div class="title-1">KRNB</div>
-                </div>
-
-                <div class="select-container-2">
-                    <div>
-                        <!--container #2 image insert-->
-                        <img class="vis-hit-icon" src="countries/kpop1.jpg" style="width:100%;">
-                        <img class="hit-icon" src="countries/kpop2.jpg" style="width:100%">
-                    </div>
-                    <div class="title-1">KPOP</div>
-                </div>
-
-            </div>
-            <!--link to other page-->
-            <a class="view-link" href="Korean Hits Genres.html">
-                <div class="view-more">View More Genres</div>
-            </a>
-        </div>
-
-        <div class="genre-selection">
-            <div class="hit-text">Japan Hits</div>
-            <div class="containers">
-
-                <div class="select-container-1">
-                    <div>
-                        <!--container #1 image insert-->
-                        <img class="vis-hit-icon" src="countries/jrock1.jpg" style="width:100%;">
-                        <img class="hit-icon" src="countries/jrock2.jpg" style="width:100%">
-                    </div>
-                    <div class="title-1">Vocaloids</div>
-                </div>
-
-                <div class="select-container-2">
-                    <div>
-                        <!--container #2 image insert-->
-                        <img class="vis-hit-icon" src="countries/jpop1.jpg" style="width:100%;">
-                        <img class="hit-icon" src="countries/jpop2.jpg" style="width:100%">
-                    </div>
-                    <div class="title-1">JPOP</div>
-                </div>
-
-            </div>
-            <!--link to other page-->
-            <a class="view-link" href="Japan Hits Genres.html">
-                <div class="view-more">View More Genres</div>
-        </div>
-
-
-        </nav>
-        <script src="script.js"></script>
+            document.querySelectorAll('.country-card').forEach(card => {
+                if (region === 'all' || card.dataset.region === region) {
+                    card.style.display = '';
+                    card.style.animation = 'none';
+                    card.offsetHeight;
+                    card.style.animation = 'cardIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
